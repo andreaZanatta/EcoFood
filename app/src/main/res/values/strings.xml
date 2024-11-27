@@ -8,4 +8,7 @@
     <string name="text4">4.3/5</string>
     <string name="button2">AGGIUNGI RECENSIONE</string>
     <string name="button3">Go Back</string>
+    <string name="button4">Maggiori Info</string>
+    <string name="text5">Product Name</string>
+    <string name="text6">0.00 €</string>
 </resources>
