@@ -10,6 +10,9 @@
     <string name="button3">Go Back</string>
     <string name="hint1">Aggiungi Titolo Recensione</string>
     <string name="hint2">Write your review here</string>
-    <string name="button4">Aggiungi la Recensione</string>
+    <string name="button6">Aggiungi la Recensione</string>
     <string name="button5">Invia Segnalazione</string>
+    <string name="button4">Maggiori Info</string>
+    <string name="text5">Product Name</string>
+    <string name="text6">0.00 €</string>
 </resources>
