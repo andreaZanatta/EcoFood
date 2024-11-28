@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">EcoFood</string>
+    <string name="imageDescr1">shopImageDescription</string>
+    <string name="text1">Negozio #</string>
+    <string name="text2">Recensioni:</string>
+    <string name="text3">Trending Reviews</string>
+    <string name="button1">PREMI E VEDI I PRODOTTI</string>
+    <string name="text4">4.3/5</string>
+    <string name="button2">AGGIUNGI RECENSIONE</string>
+    <string name="button3">Go Back</string>
+    <string name="button4">Maggiori Info</string>
+    <string name="text5">Product Name</string>
+    <string name="text6">0.00 €</string>
 </resources>
