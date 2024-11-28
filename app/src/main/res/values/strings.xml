@@ -8,4 +8,8 @@
     <string name="text4">4.3/5</string>
     <string name="button2">AGGIUNGI RECENSIONE</string>
     <string name="button3">Go Back</string>
+    <string name="hint1">Aggiungi Titolo Recensione</string>
+    <string name="hint2">Write your review here</string>
+    <string name="button4">Aggiungi la Recensione</string>
+    <string name="button5">Invia Segnalazione</string>
 </resources>
