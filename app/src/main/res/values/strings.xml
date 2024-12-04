@@ -13,10 +13,14 @@
     <string name="hint2">Write your review here</string>
     <string name="button6">Aggiungi la Recensione</string>
     <string name="button5">Invia Segnalazione</string>
+    <string name="button7">Maggiori Info</string>
+    <string name="text7">Product Name</string>
+    <string name="text8">0.00 €</string>
     <string name="button4">Maggiori Info</string>
     <string name="text5">Product Name</string>
-    <string name="text6">0.00 €</string>
-    <string name="button4">Maggiori Info</string>
-    <string name="text5">Product Name</string>
-    <string name="text6">0.00 €</string>
+    <string name="text9">0.00 €</string>
+    <string name="text10">Nome Prodotto #</string>
+    <string name="text11">This is a brief description of the product.</string>
+    <string name="button8">Add to Cart</string>
+    <string name="imageDescr2">Filter Menu</string>
 </resources>
