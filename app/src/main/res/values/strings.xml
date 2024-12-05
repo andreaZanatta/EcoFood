@@ -23,4 +23,6 @@
     <string name="text11">This is a brief description of the product.</string>
     <string name="button8">Add to Cart</string>
     <string name="imageDescr2">Filter Menu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
