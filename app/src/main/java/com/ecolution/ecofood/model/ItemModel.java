@@ -7,13 +7,17 @@ public class ItemModel {
     String categoria;
     double prezzo;
     String descrizione;
+    String image;
     Date scadenza;
 
-    public ItemModel(String nome, String categoria, double prezzo, String descrizione, Date scadenza){
+    public ItemModel() { }
+
+    public ItemModel(String nome, String categoria, double prezzo, String descrizione, String url, Date scadenza){
         this.nome = nome;
         this.categoria = categoria;
         this.prezzo = prezzo;
         this.descrizione = descrizione;
+        this.image = url;
         this.scadenza = scadenza;
     }
 
@@ -33,6 +37,8 @@ public class ItemModel {
         this.descrizione = descrizione;
     }
 
+    public void setImage(String url) { this.image = url; }
+
     public void setScadenza(Date scadenza) {
         this.scadenza = scadenza;
     }
@@ -45,13 +51,13 @@ public class ItemModel {
         return categoria;
     }
 
-    public double getPrezzo() {
-        return prezzo;
-    }
+    public double getPrezzo() { return prezzo; }
 
     public String getDescrizione() {
         return descrizione;
     }
+
+    public String getImage() { return image; }
 
     public Date getScadenza() {
         return scadenza;
