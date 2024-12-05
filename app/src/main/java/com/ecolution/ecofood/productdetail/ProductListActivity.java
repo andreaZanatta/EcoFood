@@ -1,9 +1,11 @@
 package com.ecolution.ecofood.productdetail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ecolution.ecofood.MainActivity;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.ItemModel;
 
@@ -23,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ProductListActivity extends AppCompatActivity {
-
+    Button goBack;
     RecyclerView recyclerView;
     List<ItemModel> itemModels;
     NavItemAdapter navItemAdapter;
@@ -53,6 +56,16 @@ public class ProductListActivity extends AppCompatActivity {
         });
 
         EdgeToEdge.enable(this);
+
+        goBack = findViewById(R.id.button_with_arrow);
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CustomerIntent = new Intent(ProductListActivity.this, MainActivity.class);
+                CustomerIntent.putExtra("userType", "customer");
+                startActivity(CustomerIntent);
+            }
+        });
     }
 
     private void populateItemModels(List<ItemModel> itemModels) {
