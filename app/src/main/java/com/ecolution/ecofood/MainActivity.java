@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.ecolution.ecofood.databinding.ActivityMainBinding;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
+import com.ecolution.ecofood.shopdetail.ShopDetailsActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //private ActivityMainBinding binding;
     Button CustomerBtn;
     Button SellerBtn;
+    Button goToShop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         CustomerBtn = findViewById(R.id.goToCustomer);
         SellerBtn = findViewById(R.id.goToSeller);
+        goToShop = findViewById(R.id.goToShop);
 
         CustomerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
                  startActivity(SellerIntent);
              }
          });
+
+        goToShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ShopIntent = new Intent(MainActivity.this, ShopDetailsActivity.class);
+                startActivity(ShopIntent);
+            }
+        });
 
 
         /*btn.setOnClickListener(new View.OnClickListener() {
