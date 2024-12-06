@@ -20,7 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ecolution.ecofood.MainActivity;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.ItemModel;
+
 import com.ecolution.ecofood.shopdetail.ShopDetailsActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,6 +31,7 @@ import java.util.List;
 
 public class ProductListActivity extends AppCompatActivity {
     Button goBack;
+    FloatingActionButton btn;
     RecyclerView recyclerView;
     List<ItemModel> itemModels;
     NavItemAdapter navItemAdapter;
@@ -49,6 +53,12 @@ public class ProductListActivity extends AppCompatActivity {
         navItemAdapter = new NavItemAdapter(this, itemModels, userType);
         recyclerView.setAdapter(navItemAdapter);
 
+        //inzio codice mio
+        if("customer".equals(userType)) {
+            btn = findViewById(R.id.addButton);
+            btn.setVisibility(View.GONE);
+        }
+        //fine codice mio
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -56,7 +66,11 @@ public class ProductListActivity extends AppCompatActivity {
             return insets;
         });
 
+
+
         EdgeToEdge.enable(this);
+
+
 
         goBack = findViewById(R.id.button_with_arrow);
         goBack.setOnClickListener(new View.OnClickListener() {
