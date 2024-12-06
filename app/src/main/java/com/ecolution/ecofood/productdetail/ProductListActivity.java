@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ecolution.ecofood.MainActivity;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.ItemModel;
+import com.ecolution.ecofood.shopdetail.ShopDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,7 +62,7 @@ public class ProductListActivity extends AppCompatActivity {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent CustomerIntent = new Intent(ProductListActivity.this, MainActivity.class);
+                Intent CustomerIntent = new Intent(ProductListActivity.this, ShopDetailsActivity.class);
                 CustomerIntent.putExtra("userType", "customer");
                 startActivity(CustomerIntent);
             }
