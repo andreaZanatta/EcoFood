@@ -4,18 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.ecolution.ecofood.databinding.ActivityMainBinding;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
+import com.ecolution.ecofood.profile.ProfileActivity;
 import com.ecolution.ecofood.shopdetail.ShopDetailsActivity;
 
 
@@ -26,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button CustomerBtn;
     Button SellerBtn;
     Button goToShop;
+    Button goToProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         CustomerBtn = findViewById(R.id.goToCustomer);
         SellerBtn = findViewById(R.id.goToSeller);
         goToShop = findViewById(R.id.goToShop);
+        goToProfile = findViewById(R.id.goToProfile);
 
         CustomerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        goToProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(profileIntent);
+            }
+        });
 
         /*btn.setOnClickListener(new View.OnClickListener() {
             @Override
