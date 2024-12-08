@@ -331,7 +331,7 @@
             android:id="@+id/imageView4"
             android:layout_width="36dp"
             android:layout_height="29dp"
-            app:srcCompat="@drawable/edit"
+            app:srcCompat="@drawable/edit_pen"
             tools:layout_editor_absoluteX="359dp"
             tools:layout_editor_absoluteY="309dp" />
 
