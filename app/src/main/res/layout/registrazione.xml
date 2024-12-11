@@ -1,0 +1,163 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Titolo Registrazione -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrazione"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nome -->
+        <EditText
+            android:id="@+id/et_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background" />
+
+        <!-- Cognome -->
+        <EditText
+            android:id="@+id/et_cognome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cognome"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginTop="8dp" />
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginTop="8dp" />
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginTop="8dp" />
+
+        <!-- Scelta del ruolo -->
+        <RadioGroup
+            android:id="@+id/rg_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <RadioButton
+                android:id="@+id/rb_cliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cliente"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rb_venditore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Venditore"
+                android:layout_marginStart="16dp" />
+        </RadioGroup>
+
+        <!-- URL immagine personale (obbligatorio per tutti) -->
+        <EditText
+            android:id="@+id/et_profile_image_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL Immagine Personale"
+            android:inputType="textUri"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginTop="8dp" />
+
+        <!-- Campi aggiuntivi per venditore -->
+        <LinearLayout
+            android:id="@+id/venditore_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="16dp">
+
+            <!-- Nome Negozio -->
+            <EditText
+                android:id="@+id/et_nome_negozio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome Negozio"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="@drawable/edit_text_background" />
+
+            <!-- Indirizzo -->
+            <EditText
+                android:id="@+id/et_indirizzo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Indirizzo"
+                android:inputType="textPostalAddress"
+                android:padding="12dp"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginTop="8dp" />
+
+            <!-- URL logo negozio (solo per venditori) -->
+            <EditText
+                android:id="@+id/et_store_logo_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="URL Logo Negozio"
+                android:inputType="textUri"
+                android:padding="12dp"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Pulsante Registrazione -->
+        <Button
+            android:id="@+id/btn_registrati"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrati"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp" />
+
+        <!-- Image View per visualizzare le immagini -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="303dp"
+            android:layout_height="118dp"
+            app:srcCompat="@drawable/screenshot__65_" />
+    </LinearLayout>
+</ScrollView>
+
+
+
+
