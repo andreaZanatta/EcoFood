@@ -5,4 +5,5 @@
     <color name="custom_green_one">#3F704D</color>
     <color name="custom_green_two">#A8E4A0</color>
     <color name="gold">#FFD700</color>
+    <color name="colorPrimary">#6200EE</color> <!-- Colore principale dell'app -->
 </resources>
