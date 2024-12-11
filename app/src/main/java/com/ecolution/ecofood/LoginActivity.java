@@ -1,5 +1,6 @@
 package com.ecolution.ecofood;
 
+import com.ecolution.ecofood.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -25,13 +26,13 @@ public class LoginActivity extends AppCompatActivity {
         // Inizializza Firebase
         mAuth = FirebaseAuth.getInstance();
 
-        // Initialize views
+        // Inizializza le views
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         tvRegister = findViewById(R.id.tvRegister);
 
-        // Login button
+        // Gestione login
         btnLogin.setOnClickListener(v -> {
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Navigate to registration
+        // Naviga alla schermata di registrazione
         tvRegister.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
@@ -57,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(this, "Accesso riuscito!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
-                        finish();
+                        finish(); // Chiude la LoginActivity
                     } else {
                         Toast.makeText(this, "Errore: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }

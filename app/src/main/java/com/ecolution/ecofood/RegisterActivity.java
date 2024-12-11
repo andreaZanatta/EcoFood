@@ -1,5 +1,6 @@
 package com.ecolution.ecofood;
 
+import com.ecolution.ecofood.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean isVenditore = false;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Inizializza Firebase
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirestore = FirebaseFirestore.getInstance();
 
         // Inizializza i campi
         etNome = findViewById(R.id.et_nome);
@@ -88,9 +88,11 @@ public class RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         String userId = mAuth.getCurrentUser().getUid();
 
-                        // Salva i dettagli dell'utente nel database
+                        // Crea un oggetto utente con i dati
                         User user = new User(nome, cognome, email, isVenditore, nomeNegozio, indirizzo, profileImageUrl, storeLogoUrl);
-                        mDatabase.child("users").child(userId).setValue(user)
+
+                        // Salva i dati su Firestore
+                        mFirestore.collection("users").document(userId).set(user)
                                 .addOnCompleteListener(dbTask -> {
                                     if (dbTask.isSuccessful()) {
                                         Toast.makeText(this, "Registrazione completata!", Toast.LENGTH_SHORT).show();
@@ -126,3 +128,4 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 }
+
