@@ -22,7 +22,12 @@ import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.ItemModel;
 
 import com.ecolution.ecofood.shopdetail.ShopDetailsActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
@@ -35,10 +40,13 @@ public class ProductListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<ItemModel> itemModels;
     NavItemAdapter navItemAdapter;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        db = FirebaseFirestore.getInstance();
 
         setContentView(R.layout.activity_product_list);
 
@@ -84,49 +92,22 @@ public class ProductListActivity extends AppCompatActivity {
     }
 
     private void populateItemModels(List<ItemModel> itemModels) {
-        itemModels.add(new ItemModel(
-                "Apple",
-                "Fruit",
-                1.99,
-                "Fresh red apples",
-                "https://example.com/apple.jpg",
-                new Date(2024, 12, 31)
-        ));
-
-        itemModels.add(new ItemModel(
-                "Banana",
-                "Fruit",
-                0.99,
-                "Ripe yellow bananas",
-                "https://example.com/banana.jpg",
-                new Date(2024, 11, 30)
-        ));
-
-        itemModels.add(new ItemModel(
-                "Carrot",
-                "Vegetable",
-                1.49,
-                "Organic carrots",
-                "https://example.com/carrot.jpg",
-                new Date(2024, 12, 15)
-        ));
-
-        itemModels.add(new ItemModel(
-                "Milk",
-                "Dairy",
-                2.99,
-                "Fresh whole milk",
-                "https://example.com/milk.jpg",
-                new Date(2024, 12, 10)
-        ));
-
-        itemModels.add(new ItemModel(
-                "Bread",
-                "Bakery",
-                3.49,
-                "Whole wheat bread",
-                "https://example.com/bread.jpg",
-                new Date(2024, 12, 05)
-        ));
+        db.collection("products")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                ItemModel itemModel = document.toObject(ItemModel.class);
+                                if(itemModel.getVenditore().getUser_id() == /*INFORMAZIONE DI SESSIONE*/)
+                                itemModels.add(itemModel);
+                                navItemAdapter.notifyDataSetChanged();
+                            }
+                        } else {
+                            Toast.makeText(ProductListActivity.this, "Error: " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

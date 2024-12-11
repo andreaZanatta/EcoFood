@@ -9,16 +9,18 @@ public class ItemModel {
     String descrizione;
     String image;
     Date scadenza;
+    SellerModel venditore;
 
     public ItemModel() { }
 
-    public ItemModel(String nome, String categoria, double prezzo, String descrizione, String url, Date scadenza){
+    public ItemModel(String nome, String categoria, double prezzo, String descrizione, String url, Date scadenza, SellerModel seller){
         this.nome = nome;
         this.categoria = categoria;
         this.prezzo = prezzo;
         this.descrizione = descrizione;
         this.image = url;
         this.scadenza = scadenza;
+        this.venditore = seller;
     }
 
     public void setNome(String nome) {
@@ -62,4 +64,6 @@ public class ItemModel {
     public Date getScadenza() {
         return scadenza;
     }
+
+    public SellerModel getVenditore() { return venditore; }
 }

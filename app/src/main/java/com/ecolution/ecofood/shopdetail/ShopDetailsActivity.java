@@ -85,6 +85,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
     }
 
     private void populateItemModels(List<ReviewModel> reviews) {
+
         reviewList.add(new ReviewModel(
                 "Great Service",
                 "I had an excellent experience shopping here!",

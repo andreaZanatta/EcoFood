@@ -1,6 +1,6 @@
 package com.ecolution.ecofood.model;
 
-public class UserModel {
+abstract public class UserModel {
     private int user_id;
     private String firstName;
     private String lastName;
