@@ -38,6 +38,6 @@ Ogni negozio presente nell'app è classificato in base ai seguenti parametri chi
 ## 🚀 **Funzionalità Attuali**
 
 - Sviluppata la parte base dell'applicazione quindi login e registrazione. 
-- Completato il login si passa a una schermata che verrà rimpiazzata con una mappa in base al ruolo che hai dichiarato alla registrazione (venditore o compratore). 
+- Completato il login si passa a una schermata che verrà rimpiazzata con delle altre schermate diverse in base al ruolo che è stato dichiarato durante la registrazione (venditore o compratore)
 - Per tutto il resto dell'applicazione la linea guida che si è tenuta per questa consegna è che le interazioni tra le pagine funzionino e siano sviluppate ma sono statiche ovvero tutto ciò che richiede una aggiunta, rimozione, ecc... è attualmente sviluppato a livello di codice, o comunque è preimpostato e quindi non è momentaneamente dinamica con l'uso del database (Firebase).
 
