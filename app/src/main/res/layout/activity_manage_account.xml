@@ -36,17 +36,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="34dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5"
-                app:srcCompat="@drawable/arrow" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -195,13 +184,10 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
-            android:id="@+id/btn_registrati"
+            android:id="@+id/btn_conferma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#ED7474"
-            android:text="Conferma"
-            android:textColor="@color/white" />
+            android:text="Conferma" />
 
     </LinearLayout>
 </ScrollView>

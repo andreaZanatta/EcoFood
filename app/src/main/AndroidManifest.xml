@@ -15,10 +15,10 @@
         <!-- Register Activity -->
         <activity android:name=".RegisterActivity" />
         <activity
-            android:name=".ManageAccountActivity"
+            android:name=".profile.manage.ManageAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".ManageNotificationActivity"
+            android:name=".profile.manage.ManageNotificationActivity"
             android:exported="false" />
         <activity
             android:name=".profile.ProfileActivity"

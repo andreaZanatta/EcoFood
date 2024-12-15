@@ -14,14 +14,14 @@ import com.ecolution.ecofood.R;
 import java.util.List;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationCardViewHolder> {
-    private List<NotificationInfo> notificationInfos;
+    private List<NotificationModel> notificationModels;
 
-    public NotificationAdapter(List<NotificationInfo> notificationInfos) {
-        this.notificationInfos = notificationInfos;
+    public NotificationAdapter(List<NotificationModel> notificationModels) {
+        this.notificationModels = notificationModels;
     }
 
-    public void updateData(List<NotificationInfo> notificationInfos) {
-        this.notificationInfos = notificationInfos;
+    public void updateData(List<NotificationModel> notificationModels) {
+        this.notificationModels = notificationModels;
         notifyDataSetChanged();
     }
 
@@ -34,16 +34,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull NotificationCardViewHolder holder, int position) {
-        NotificationInfo info = notificationInfos.get(position);
-        holder.mainTextView.setText(info.getMainText());
-        holder.descriptionTextView.setText(info.getDescriptionText());
+        NotificationModel info = notificationModels.get(position);
+        holder.mainTextView.setText(info.getTitolo());
+        holder.descriptionTextView.setText(info.getDescrizione());
         holder.timeTextView.setText("1 Hours Ago");
         //holder.notificationImageView.setImageIcon();
     }
 
     @Override
     public int getItemCount() {
-        return notificationInfos.size();
+        return notificationModels.size();
     }
 
     public static class NotificationCardViewHolder extends RecyclerView.ViewHolder {
