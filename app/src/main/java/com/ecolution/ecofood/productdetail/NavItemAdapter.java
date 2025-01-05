@@ -19,21 +19,21 @@ import java.util.List;
 public class NavItemAdapter extends RecyclerView.Adapter<NavItemAdapter.ViewHolder> {
     Context context;
     List<ItemModel> list;
-    String userType;
+    boolean isSeller;
 
-    public NavItemAdapter(Context context, List<ItemModel> list, String userType){
+    public NavItemAdapter(Context context, List<ItemModel> list, boolean userType){
         this.context = context;
         this.list = list;
-        this.userType = userType;
+        this.isSeller = userType;
     }
 
     @NonNull
     @Override
     public NavItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        if("customer".equals(userType)) view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_customer_product_detail, parent, false);
-        else if("seller".equals(userType)) view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_seller_product_detail, parent, false);
-        else view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_customer_product_detail, parent, false);
+        if(isSeller) view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_seller_product_detail  , parent, false);
+        else         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_customer_product_detail, parent, false);
+
         return new ViewHolder(view);
     }
 

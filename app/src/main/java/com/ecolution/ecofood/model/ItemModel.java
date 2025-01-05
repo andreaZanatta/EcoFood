@@ -9,18 +9,18 @@ public class ItemModel {
     String descrizione;
     String image;
     Date scadenza;
-    SellerModel venditore;
+    String venditoreId;
 
     public ItemModel() { }
 
-    public ItemModel(String nome, String categoria, double prezzo, String descrizione, String url, Date scadenza, SellerModel seller){
+    public ItemModel(String nome, String categoria, double prezzo, String descrizione, String url, Date scadenza, String id){
         this.nome = nome;
         this.categoria = categoria;
         this.prezzo = prezzo;
         this.descrizione = descrizione;
         this.image = url;
         this.scadenza = scadenza;
-        this.venditore = seller;
+        this.venditoreId = id;
     }
 
     public void setNome(String nome) {
@@ -65,5 +65,5 @@ public class ItemModel {
         return scadenza;
     }
 
-    public SellerModel getVenditore() { return venditore; }
+    public String getVenditore() { return venditoreId; }
 }

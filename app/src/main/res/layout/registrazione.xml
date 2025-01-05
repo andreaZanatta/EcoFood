@@ -1,67 +1,81 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/icona"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:contentDescription="@string/app_name"
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_centerInParent="true">
 
         <!-- Titolo Registrazione -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrazione"
+            android:text="@string/registerText"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp" />
+            android:fontFamily="@font/alexandria_bold"
+            android:textAlignment="center"
+            android:layout_marginTop="45dp"/>
 
         <!-- Nome -->
         <EditText
             android:id="@+id/et_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome"
+            android:hint="nome"
             android:inputType="textPersonName"
-            android:padding="12dp"
-            android:background="@drawable/edit_text_background" />
+            android:fontFamily="@font/alexandria_light"
+            android:padding="6dp"
+            android:background="@drawable/searchbar"/>
 
         <!-- Cognome -->
         <EditText
             android:id="@+id/et_cognome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cognome"
+            android:hint="cognome"
             android:inputType="textPersonName"
-            android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="8dp" />
+            android:fontFamily="@font/alexandria_light"
+            android:padding="6dp"
+            android:background="@drawable/searchbar"
+            android:layout_marginTop="10dp"/>
 
         <!-- Email -->
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/emailText"
             android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="8dp" />
+            android:fontFamily="@font/alexandria_light"
+            android:padding="6dp"
+            android:background="@drawable/searchbar"
+            android:layout_marginTop="10dp"/>
 
         <!-- Password -->
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/passwordText"
             android:inputType="textPassword"
-            android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="8dp" />
+            android:fontFamily="@font/alexandria_light"
+            android:padding="6dp"
+            android:background="@drawable/searchbar"
+            android:layout_marginTop="10dp"/>
 
         <!-- Scelta del ruolo -->
         <RadioGroup
@@ -69,33 +83,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="10dp">
 
             <RadioButton
                 android:id="@+id/rb_cliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cliente"
-                android:checked="true" />
+                android:checked="true"
+                android:buttonTint="@color/radio_selector"
+                android:fontFamily="@font/alexandria_light"/>
 
             <RadioButton
                 android:id="@+id/rb_venditore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Venditore"
-                android:layout_marginStart="16dp" />
+                android:layout_marginStart="16dp"
+                android:buttonTint="@color/radio_selector"
+                android:fontFamily="@font/alexandria_light"/>
         </RadioGroup>
 
-        <!-- URL immagine personale (obbligatorio per tutti) -->
-        <EditText
-            android:id="@+id/et_profile_image_url"
+        <!-- immagine personale (obbligatorio per tutti) -->
+
+        <RelativeLayout
+            android:id="@+id/upload_photo_customer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="URL Immagine Personale"
-            android:inputType="textUri"
-            android:padding="12dp"
-            android:background="@drawable/edit_text_background"
-            android:layout_marginTop="8dp" />
+            android:layout_height="match_parent"
+            android:background="@drawable/searchbar"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/upload_photo_text_customer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="inserisci la tua foto!"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/alexandria_light"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="90dp"/>
+
+            <ImageButton
+                android:id="@+id/upload_photo_button_customer"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerInside"
+                android:src="@drawable/upload"
+                android:contentDescription="uploadPhoto" />
+        </RelativeLayout>
 
         <!-- Campi aggiuntivi per venditore -->
         <LinearLayout
@@ -113,8 +149,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Nome Negozio"
                 android:inputType="text"
-                android:padding="12dp"
-                android:background="@drawable/edit_text_background" />
+                android:fontFamily="@font/alexandria_light"
+                android:padding="6dp"
+                android:background="@drawable/searchbar"/>
 
             <!-- Indirizzo -->
             <EditText
@@ -123,20 +160,38 @@
                 android:layout_height="wrap_content"
                 android:hint="Indirizzo"
                 android:inputType="textPostalAddress"
-                android:padding="12dp"
-                android:background="@drawable/edit_text_background"
-                android:layout_marginTop="8dp" />
+                android:fontFamily="@font/alexandria_light"
+                android:padding="6dp"
+                android:background="@drawable/searchbar"
+                android:layout_marginTop="10dp" />
 
             <!-- URL logo negozio (solo per venditori) -->
-            <EditText
-                android:id="@+id/et_store_logo_url"
+            <RelativeLayout
+                android:id="@+id/upload_photo_seller"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="URL Logo Negozio"
-                android:inputType="textUri"
-                android:padding="12dp"
-                android:background="@drawable/edit_text_background"
-                android:layout_marginTop="8dp" />
+                android:layout_height="match_parent"
+                android:background="@drawable/searchbar"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/upload_photo_text_seller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="inserisci la tua foto!"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/alexandria_light"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="90dp"/>
+
+                <ImageButton
+                    android:id="@+id/upload_photo_button_seller"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/white"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/upload"
+                    android:contentDescription="uploadPhoto" />
+            </RelativeLayout>
         </LinearLayout>
 
         <!-- Pulsante Registrazione -->
@@ -144,19 +199,26 @@
             android:id="@+id/btn_registrati"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrati"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/white"
-            android:layout_marginTop="16dp" />
+            android:text="@string/registerText"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/alexandria_light"
+            app:backgroundTint="@null"
+            android:elevation="4dp"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"/>
 
-        <!-- Image View per visualizzare le immagini -->
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="303dp"
-            android:layout_height="118dp"
-            app:srcCompat="@drawable/screenshot__65_" />
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hai già un account? Accedi subito!"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>
 
 
 

@@ -1,7 +1,9 @@
 package com.ecolution.ecofood.home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        boolean isSeller = sharedPreferences.getBoolean("userType", false);
+
+        Log.d("debug", "Let's check for is seller: " + isSeller + "!!");
+
+        /*
         boolean isVenditore = getIntent().getBooleanExtra("isVenditore", false);
 
         // Inizializza i bottoni
@@ -98,6 +106,6 @@ public class HomeActivity extends AppCompatActivity {
         transaction.commit();
 
         // Aggiorna il frammento corrente
-        currentFragment = fragment;
+        currentFragment = fragment; */
     }
 }

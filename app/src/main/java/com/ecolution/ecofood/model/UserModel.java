@@ -1,7 +1,7 @@
 package com.ecolution.ecofood.model;
 
-abstract public class UserModel {
-    private int user_id;
+public class UserModel {
+    private String user_id;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,7 +11,7 @@ abstract public class UserModel {
 
     public UserModel() { }
 
-    public UserModel(int id, String fname, String lname, String email, String hash, boolean isSeller, String img){
+    public UserModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img){
         this.user_id = id;
         this.firstName = fname;
         this.lastName = lname;
@@ -21,7 +21,7 @@ abstract public class UserModel {
         this.image = img;
     }
 
-    public UserModel(int id, String fname, String lname, String email, boolean isSeller){
+    public UserModel(String  id, String fname, String lname, String email, boolean isSeller){
         this.user_id = id;
         this.firstName = fname;
         this.lastName = lname;
@@ -29,7 +29,7 @@ abstract public class UserModel {
         this.isSeller = isSeller;
     }
 
-    public void setUser_id(int id) {
+    public void setUser_id(String id) {
         this.user_id = id;
     }
 
@@ -57,7 +57,7 @@ abstract public class UserModel {
         this.image = image;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 

@@ -1,6 +1,7 @@
 package com.ecolution.ecofood.productdetail;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,10 @@ public class ProductListActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_product_list);
 
-        String userType = getIntent().getStringExtra("userType");
+        SharedPreferences sessionInformations = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        boolean isSeller = sessionInformations.getBoolean("userType", false);
+        //String userType = isSeller ? "seller" : "customer";
+        String uId = sessionInformations.getString("uId", "0");
 
         recyclerView = findViewById(R.id.product_list_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -58,11 +62,11 @@ public class ProductListActivity extends AppCompatActivity {
         itemModels = new ArrayList<>();
         populateItemModels(itemModels); // Call a helper method to populate the list
 
-        navItemAdapter = new NavItemAdapter(this, itemModels, userType);
+        navItemAdapter = new NavItemAdapter(this, itemModels, isSeller);
         recyclerView.setAdapter(navItemAdapter);
 
         //inzio codice mio
-        if("customer".equals(userType)) {
+        if(!isSeller) {
             btn = findViewById(R.id.addButton);
             btn.setVisibility(View.GONE);
         }
@@ -90,6 +94,7 @@ public class ProductListActivity extends AppCompatActivity {
             }
         });
     }
+    //private void populateItemModels(List<ItemModel> itemModels) {}
 
     private void populateItemModels(List<ItemModel> itemModels) {
         db.collection("products")
@@ -100,7 +105,7 @@ public class ProductListActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 ItemModel itemModel = document.toObject(ItemModel.class);
-                                if(itemModel.getVenditore().getUser_id() == /*INFORMAZIONE DI SESSIONE*/)
+                                //if(itemModel.getVenditore().getUser_id() == /*INFORMAZIONE DI SESSIONE)
                                 itemModels.add(itemModel);
                                 navItemAdapter.notifyDataSetChanged();
                             }
@@ -110,4 +115,6 @@ public class ProductListActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 }

@@ -30,4 +30,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="loginText">Login!</string>
+    <string name="registerText">Signup!</string>
+    <string name="emailText">insert email...</string>
+    <string name="passwordText">insert password...</string>
 </resources>
