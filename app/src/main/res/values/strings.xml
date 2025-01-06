@@ -34,4 +34,5 @@
     <string name="registerText">Signup!</string>
     <string name="emailText">insert email...</string>
     <string name="passwordText">insert password...</string>
+    <string name="text21">Tuo Negozio</string>
 </resources>

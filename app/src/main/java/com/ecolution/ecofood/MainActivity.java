@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ecolution.ecofood.home.HomeActivity;
+import com.ecolution.ecofood.homepages.HomeActivity;
 
 public class MainActivity extends AppCompatActivity {
 

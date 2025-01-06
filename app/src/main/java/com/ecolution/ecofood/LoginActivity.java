@@ -1,6 +1,5 @@
 package com.ecolution.ecofood;
 
-import com.ecolution.ecofood.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,25 +12,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ecolution.ecofood.home.HomeActivity;
+import com.ecolution.ecofood.model.CustomerModel;
+import com.ecolution.ecofood.model.SellerModel;
 import com.ecolution.ecofood.model.UserModel;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.concurrent.CompletableFuture;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
@@ -108,21 +99,24 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("uId", user.getUser_id());
                             editor.putString("email", user.getEmail());
-                            editor.putBoolean("userType", user.isSeller()); // Save user type
-                            editor.putBoolean("isLoggedIn", true); // Save login status
-                            editor.apply();
+                            editor.putBoolean("userType", user.isSeller());
 
-                            Log.d("Debug", "isSeller è: " + user.isSeller() + "\n Sessione sta per essere gestita!");
                             Intent intent;
-                            if (user.isSeller()) {
-                                // Navigate to SellerActivity
-                                 intent = new Intent(LoginActivity.this, ProductListActivity.class);
+                            if(user.isSeller()){
+                                SellerModel seller = us.toObject(SellerModel.class);
+                                editor.putString("shopName", seller.getShopName());
+                                editor.apply();
+
+                                intent = new Intent(LoginActivity.this, ProductListActivity.class);
                             } else {
-                                // Navigate to CustomerActivity
+                                //CustomerModel customer = us.toObject(CustomerModel.class);
+                                editor.apply();
+
                                 intent = new Intent(LoginActivity.this, MainActivity.class);
                             }
+
                             startActivity(intent);
-                            finish(); // Close LoginActivity
+                            finish();
                         }
                     }
                 }
@@ -130,9 +124,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 }
-
-
-
     /*
     private void checkUserType(String userId) {
         Log.d("Debug", "Am I checking type");

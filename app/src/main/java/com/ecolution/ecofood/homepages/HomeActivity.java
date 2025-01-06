@@ -1,19 +1,13 @@
-package com.ecolution.ecofood.home;
+package com.ecolution.ecofood.homepages;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.ecolution.ecofood.R;
-import com.ecolution.ecofood.productdetail.ProductListActivity;
 
 public class HomeActivity extends AppCompatActivity {
 

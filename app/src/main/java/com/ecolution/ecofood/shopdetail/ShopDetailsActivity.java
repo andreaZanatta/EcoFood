@@ -16,16 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ecolution.ecofood.MainActivity;
 import com.ecolution.ecofood.R;
-import com.ecolution.ecofood.home.HomeActivity;
 import com.ecolution.ecofood.model.CustomerModel;
-import com.ecolution.ecofood.model.ItemModel;
 import com.ecolution.ecofood.model.ReviewModel;
 import com.ecolution.ecofood.model.SellerModel;
-import com.ecolution.ecofood.productdetail.NavItemAdapter;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ShopDetailsActivity extends AppCompatActivity {

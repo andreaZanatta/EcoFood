@@ -7,4 +7,5 @@
     <color name="gold">#FFD700</color>
     <color name="colorPrimary">#6200EE</color> <!-- Colore principale dell'app -->
     <color name="red">#D50000</color>
+    <color name="selected_color">#D0A8E4A0</color>
 </resources>
