@@ -4,7 +4,7 @@ package com.ecolution.ecofood.model;
 import java.io.Serializable;
 
 public class UserModel implements Serializable {
-    private int user_id;
+    private String user_id;
     private String firstName;
     private String lastName;
     private String email;
