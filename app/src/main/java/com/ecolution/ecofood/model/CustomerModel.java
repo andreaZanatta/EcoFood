@@ -11,12 +11,16 @@ public class CustomerModel extends UserModel {
         this.notification = notification;
     }
 
-    public CustomerModel(int id, String fname, String lname, String email, String hash, boolean isSeller, String img, Notification notification) {
+    public CustomerModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img, Notification notification) {
         super(id, fname, lname, email, hash, isSeller, img);
         this.notification = notification;
     }
 
-    public CustomerModel(int id, String fname, String lname, String email) {
+    public CustomerModel(String id, String fname, String lname, String email) {
+        super(id, fname, lname, email, false);
+    }
+
+    public CustomerModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img) {
         super(id, fname, lname, email, false);
     }
 
