@@ -40,4 +40,6 @@ public class SellerModel extends UserModel{
     public void setNotification(Notification nt) { this.notification = nt; }
 
     public Notification getNotification() { return this.notification; }
+
+    public String getLogo() { return this.logo; }
 }

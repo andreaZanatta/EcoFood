@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.homepages.HomeActivity;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
+import com.ecolution.ecofood.shoplist.ShopListActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -36,7 +37,7 @@ public class TabBar {
     public void handleNavigation(MenuItem item) {
         int itemId = item.getItemId();
         if(itemId == R.id.personalShop) context.startActivity(new Intent(context, ProductListActivity.class));
-        else if(itemId == R.id.shopList) context.startActivity(new Intent(context, HomeActivity.class));
+        else if(itemId == R.id.shopList) context.startActivity(new Intent(context, ShopListActivity.class));
         else if(itemId == R.id.mapView) context.startActivity(new Intent(context, HomeActivity.class));
         else if(itemId == R.id.favorites) context.startActivity(new Intent(context, HomeActivity.class));
         else if(itemId == R.id.profile) context.startActivity(new Intent(context, HomeActivity.class));
