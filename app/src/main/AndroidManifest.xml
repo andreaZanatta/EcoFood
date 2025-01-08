@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.createWriteRequest" />
@@ -20,6 +20,15 @@
             android:exported="false" />
         <!-- Register Activity -->
         <activity android:name=".RegisterActivity" />
+        <activity
+            android:name=".profile.manage.ManageAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.manage.ManageNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".shopdetail.ShopDetailsActivity"
             android:exported="false" />

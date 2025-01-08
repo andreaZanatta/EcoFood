@@ -1,7 +1,10 @@
 package com.ecolution.ecofood.model;
 
-public class UserModel {
-    private String user_id;
+
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
+    private int user_id;
     private String firstName;
     private String lastName;
     private String email;
@@ -84,4 +87,6 @@ public class UserModel {
     public String getImage() {
         return image;
     }
+
+    public String getFullName() { return firstName+" "+lastName; }
 }
