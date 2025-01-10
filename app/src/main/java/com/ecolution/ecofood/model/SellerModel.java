@@ -27,6 +27,7 @@ public class SellerModel extends UserModel{
         super(id, fname, lname, email, hash, isSeller, img);
         this.shopName = shopName;
         this.address = address;
+        this.logo = logo;
     }
 
     public void setShopName(String nm) { this.shopName = nm; }
@@ -40,4 +41,6 @@ public class SellerModel extends UserModel{
     public void setNotification(Notification nt) { this.notification = nt; }
 
     public Notification getNotification() { return this.notification; }
+
+    public String getLogo() { return this.logo; }
 }

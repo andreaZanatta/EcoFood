@@ -87,24 +87,30 @@ public class ShopDetailsActivity extends AppCompatActivity {
                 "I had an excellent experience shopping here!",
                 4.5f,
                 // TODO: SISTEMARE id
-                new CustomerModel(null, "John", "Doe", "john.doe@example.com"),
-                new SellerModel(null, "Alice", "Brown", "alice.brown@example.com", "Alice's Shop", "123 Market Street")
+                //new CustomerModel(null, "John", "Doe", "john.doe@example.com"),
+                null,
+                null
+                //new SellerModel(null, "Alice", "Brown", "alice.brown@example.com", "Alice's Shop", "123 Market Street")
         ));
 
         reviewList.add(new ReviewModel(
                 "Amazing Products",
                 "The products are top-notch, will definitely recmmend",
                 5.0f,
-                new CustomerModel(null, "Jane", "Smith", "jane.smith@example.com"),
-                new SellerModel(null, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
+                null,
+                //new CustomerModel(null, "Jane", "Smith", "jane.smith@example.com"),
+                null
+                //new SellerModel(null, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
         ));
 
         reviewList.add(new ReviewModel(
                 "Good but Expensive",
                 "The products were good, but the price was a bit high",
                 3.5f,
-                new CustomerModel(null, "John", "Doe", "john.doe@example.com"),
-                new SellerModel(null, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
+                //new CustomerModel(null, "John", "Doe", "john.doe@example.com"),
+                null,
+                null
+                //new SellerModel(null, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
         ));
     }
 

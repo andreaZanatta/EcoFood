@@ -1,12 +1,15 @@
 package com.ecolution.ecofood.profile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,12 +19,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.ecolution.ecofood.R;
+import com.ecolution.ecofood.model.SellerModel;
 import com.ecolution.ecofood.model.UserModel;
 import com.ecolution.ecofood.profile.manage.ManageAccountActivity;
+import com.ecolution.ecofood.utils.TabBar;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -36,9 +46,9 @@ public class ProfileActivity extends AppCompatActivity {
     TextView emailTextView;
     Button modifyProfileButton;
     RecyclerView notificationRecyclerView;
-
     UserModel userModel;
     ArrayList<NotificationModel> notifications = new ArrayList<>();
+    TabBar tabBar;
 
     private FirebaseFirestore db;
 
@@ -47,13 +57,26 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        prepareActivity();
-        getUserModelByIntent();
 
         db = FirebaseFirestore.getInstance();
 
-        getNotifications();
-        updateInterface();
+        SharedPreferences sessionInformations = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        boolean isSeller = sessionInformations.getBoolean("userType", false);
+
+        // tab bar managed
+        /*BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        tabBar = new TabBar(this, bottomNav);
+        tabBar.updateSelectedItem(R.id.shopList); // Set the appropriate menu item ID
+        tabBar.setupBottomNavigationMenu(bottomNav.getMenu(), isSeller);
+        bottomNav.setOnItemSelectedListener(item -> {
+            tabBar.handleNavigation(item);
+            return  true;
+        });*/
+
+        prepareActivity();
+        getUserModel();
+
+
     }
 
     private void prepareActivity() {
@@ -78,11 +101,27 @@ public class ProfileActivity extends AppCompatActivity {
         notificationRecyclerView.setAdapter(notificationAdapter);
     }
 
-    private void getUserModelByIntent() {
-        Serializable userSerializable = getIntent().getSerializableExtra("user");
-        if (userSerializable != null) {
-            userModel = (UserModel) userSerializable;
-        }
+    private void getUserModel() {
+        // session information retrieved
+        SharedPreferences sessionInformations = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        String uId = sessionInformations.getString("uId", "");
+
+        db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()) {
+                    for(QueryDocumentSnapshot us : task.getResult()){
+                        UserModel user = us.toObject(UserModel.class);
+                        if(user.getUser_id().equals(uId)) {
+                            userModel = user;
+
+                            getNotifications();
+                            updateInterface();
+                        }
+                    }
+                }
+            }
+        });
     }
 
     private void updateInterface() {
