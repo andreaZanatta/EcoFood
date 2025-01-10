@@ -51,6 +51,7 @@ public class ShopListActivity extends AppCompatActivity {
         // tab bar managed
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         tabBar = new TabBar(this, bottomNav);
+        tabBar.updateSelectedItem(R.id.shopList); // Set the appropriate menu item ID
         tabBar.setupBottomNavigationMenu(bottomNav.getMenu(), isSeller);
         bottomNav.setOnItemSelectedListener(item -> {
             tabBar.handleNavigation(item);
@@ -85,8 +86,10 @@ public class ShopListActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             for(QueryDocumentSnapshot doc : task.getResult()) {
                                 SellerModel shop = doc.toObject(SellerModel.class);
-                                shops.add(shop);
-                                nav.notifyDataSetChanged();
+                                if(shop.isSeller()){
+                                    shops.add(shop);
+                                    nav.notifyDataSetChanged();
+                                }
                             }
                         } else Toast.makeText(ShopListActivity.this, "Error: " + task.getException(), Toast.LENGTH_SHORT).show();
                     }

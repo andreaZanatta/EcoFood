@@ -163,17 +163,17 @@
         </LinearLayout>
 
         <!-- Pulsante Registrazione -->
-
+        <!--
         <TextView
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Immagine Profilo" />
+            android:text="Immagine Profilo" /> -->
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/nameTextView"
@@ -183,12 +183,24 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_conferma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Conferma" />
-
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/alexandria_light"
+            android:padding="3dp"
+            android:text="Conferma"
+            android:textSize="16sp"
+            app:backgroundTint="@null"
+            app:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
     </LinearLayout>
 </ScrollView>
 

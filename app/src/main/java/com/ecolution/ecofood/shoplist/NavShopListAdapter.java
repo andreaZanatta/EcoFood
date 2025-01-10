@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +52,13 @@ public class NavShopListAdapter extends RecyclerView.Adapter<NavShopListAdapter.
         holder.shopAddress.setText(sellerModelList.get(position).getAddress());
         //holder.shopImagePath.setText(sellerModelList.get(position).getLogo());
         evaluateStars(shop.getUser_id(), holder.starsReview);
+
+        String shopImagePath = shop.getLogo();
+        Glide.with(context)
+                .load("file://" + shopImagePath)
+                .placeholder(R.drawable.insalata)
+                .error(R.drawable.carrot)
+                .into(holder.shopImage);
     }
 
     private void evaluateStars(String shopId, RatingBar rtgs){
@@ -87,7 +95,7 @@ public class NavShopListAdapter extends RecyclerView.Adapter<NavShopListAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView shopName, shopAddress;
-        //String shopImagePath;
+        ImageView shopImage;
         RatingBar starsReview;
 
         public ViewHolder(@NonNull View shopListView) {
@@ -96,7 +104,7 @@ public class NavShopListAdapter extends RecyclerView.Adapter<NavShopListAdapter.
             shopName = shopListView.findViewById(R.id.titleView_shopList);
             shopAddress = shopListView.findViewById(R.id.addressView_shopList);
             starsReview = shopListView.findViewById(R.id.ratings_shopList);
-            //shopImagePath =
+            shopImage = shopListView.findViewById(R.id.imageView_shopList);
         //shopListView.findViewById(R.id.imageView_shopList);
 
         }

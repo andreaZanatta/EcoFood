@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -116,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(this, "Compila tutti i campi per il venditore!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                Log.d("Debug", "Seller Logo Path: " + sellerLogoPath);
                 /* TODO: SISTEMARE Store Logo Url paramether passing */
                 registraUtente(email, password, nome, cognome, isVenditore, nomeNegozio, indirizzo, customerImagePath, sellerLogoPath);
             } else {
@@ -140,7 +141,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                     // Pass the path to the appropriate variable based on the request code
                     if (requestCode == PICK_CUSTOMER_IMAGE)     customerImagePath = imagePath; // Save the customer image path
-                    else    sellerLogoPath = imagePath; // Save the seller logo path
+                    else if(requestCode == PICK_SELLER_IMAGE)   sellerLogoPath = imagePath; // Save the seller logo path
+                    else Log.e("Error", "Only two types of users, how is it possible??");
 
                     Toast.makeText(this, "Image saved to " + newFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
@@ -187,8 +189,10 @@ public class RegisterActivity extends AppCompatActivity {
                         // Crea un oggetto utente con i dati
                         if(!isVenditore)
                             user = new CustomerModel(userId, nome, cognome, email, password, false, profileImageUrl);
-                        else
+                        else {
+                            Log.d("Debug", "PROVA LOGO: " + storeLogoUrl);
                             user = new SellerModel(userId, nome, cognome, email, password, true, profileImageUrl, nomeNegozio, indirizzo, storeLogoUrl);
+                        }
 
 
                         // Salva i dati su Firestore
@@ -210,22 +214,5 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
-
-    // Classe per i dati utente
-    /*public static class User {
-        public String nome, cognome, email, nomeNegozio, indirizzo, profileImageUrl, storeLogoUrl;
-        public boolean isVenditore;
-
-        public User(String nome, String cognome, String email, boolean isVenditore, String nomeNegozio, String indirizzo, String profileImageUrl, String storeLogoUrl) {
-            this.nome = nome;
-            this.cognome = cognome;
-            this.email = email;
-            this.isVenditore = isVenditore;
-            this.nomeNegozio = nomeNegozio;
-            this.indirizzo = indirizzo;
-            this.profileImageUrl = profileImageUrl;
-            this.storeLogoUrl = storeLogoUrl;
-        }
-    } */
 }
 

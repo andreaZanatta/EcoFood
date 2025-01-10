@@ -18,8 +18,8 @@
         <ImageView
             android:id="@+id/imageView_shopList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="Insert Path"
+            android:layout_height="200dp"
+            android:contentDescription="Shop Logo Path"
             android:padding="10dp"/>
 
         <TextView
@@ -29,7 +29,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="2dp"
             android:text="Nome negozio"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:fontFamily="@font/alexandria_bold"/>
 
         <TextView
             android:id="@+id/addressView_shopList"
@@ -38,12 +39,16 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="2dp"
             android:text="Indirizzo Negozio"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/alexandria_light"/>
 
         <RatingBar
             android:id="@+id/ratings_shopList"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:progressTint="@color/gold"
+            android:progressTintMode="src_in"
+            android:isIndicator="true"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -18,6 +18,7 @@ import com.ecolution.ecofood.model.CustomerModel;
 import com.ecolution.ecofood.model.SellerModel;
 import com.ecolution.ecofood.model.UserModel;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
+import com.ecolution.ecofood.shoplist.ShopListActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -94,9 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     for(QueryDocumentSnapshot us : task.getResult()){
                         UserModel user = us.toObject(UserModel.class);
-
                         if(user.getUser_id().equals(uId)) {
-                            Log.d("Debug", "User fetched" + user);
 
                             SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -115,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //CustomerModel customer = us.toObject(CustomerModel.class);
                                 editor.apply();
 
-                                intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent = new Intent(LoginActivity.this, ShopListActivity.class);
                             }
 
                             startActivity(intent);
