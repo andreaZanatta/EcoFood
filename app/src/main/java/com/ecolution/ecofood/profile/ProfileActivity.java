@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -46,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseFirestore db;
 
     NotificationAdapter notificationAdapter;
+    private ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,11 @@ public class ProfileActivity extends AppCompatActivity {
             tabBar.handleNavigation(item);
             return  true;
         });*/
+
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> getUserModel()
+        );
 
         prepareActivity();
         getUserModel();
@@ -178,12 +186,12 @@ public class ProfileActivity extends AppCompatActivity {
     private void openManageProfile() {
         Intent intent = new Intent(ProfileActivity.this, ManageAccountActivity.class);
         intent.putExtra("user", userModel);
-        startActivity(intent);
+        activityResultLauncher.launch(intent);
     }
 
     private void openManageNotificationSetting() {
         Intent intent = new Intent(ProfileActivity.this, ManageNotificationActivity.class);
         intent.putExtra("user", userModel);
-        startActivity(intent);
+        activityResultLauncher.launch(intent);
     }
 }

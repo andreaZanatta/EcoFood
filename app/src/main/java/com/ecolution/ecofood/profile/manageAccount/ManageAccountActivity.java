@@ -1,5 +1,6 @@
 package com.ecolution.ecofood.profile.manageAccount;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
@@ -25,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class ManageAccountActivity extends AppCompatActivity {
 
@@ -112,12 +115,21 @@ public class ManageAccountActivity extends AppCompatActivity {
     }
 
     private void backToProfileActivity() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent();
+                intent.putExtra("user", userModel);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
         getOnBackPressedDispatcher().onBackPressed();
     }
 
     private void updatePasswordIfNecessary() {
         String password = passwordEditText.getText().toString();
-        if (password != "") {
+        if (!password.isEmpty()) {
             var currentUser = mAuth.getCurrentUser();
             currentUser.updatePassword(password)
                     .addOnCompleteListener(result -> {
@@ -129,25 +141,25 @@ public class ManageAccountActivity extends AppCompatActivity {
     private Map<String, Object> getValuesToUpdate() {
         Map<String, Object> updates = new HashMap<>();
         String firstName = nameEditText.getText().toString();
-        if (!firstName.isEmpty() && userModel.getFirstName() != firstName) {
+        if (!firstName.isEmpty() && !Objects.equals(userModel.getFirstName(), firstName)) {
             updates.put("firstName", firstName);
         }
         String lastName = surnameEditText.getText().toString();
-        if (!lastName.isEmpty() && userModel.getLastName() != lastName) {
+        if (!lastName.isEmpty() && !Objects.equals(userModel.getLastName(), lastName)) {
             updates.put("lastName", lastName);
         }
         String email = emailEditText.getText().toString();
-        if (!lastName.isEmpty() && userModel.getEmail() != email) {
+        if (!lastName.isEmpty() && !Objects.equals(userModel.getEmail(), email)) {
             updates.put("email", email);
         }
         if (userModel instanceof SellerModel) {
             SellerModel sellerModel = (SellerModel) userModel;
             String shopName = shopNameEditText.getText().toString();
-            if (!lastName.isEmpty() && sellerModel.getAddress() != shopName) {
+            if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), shopName)) {
                 updates.put("shopName", shopName);
             }
             String address = addressEditText.getText().toString();
-            if (!lastName.isEmpty() && sellerModel.getAddress() != address) {
+            if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), address)) {
                 updates.put("address", address);
             }
         }
@@ -166,25 +178,25 @@ public class ManageAccountActivity extends AppCompatActivity {
                     .update(updates)
                     .addOnCompleteListener(result -> {
                         String firstName = nameEditText.getText().toString();
-                        if (!firstName.isEmpty() && userModel.getFirstName() != firstName) {
+                        if (!firstName.isEmpty() && !Objects.equals(userModel.getFirstName(), firstName)) {
                             userModel.setFirstName(firstName);
                         }
                         String lastName = surnameEditText.getText().toString();
-                        if (!lastName.isEmpty() && userModel.getLastName() != lastName) {
+                        if (!lastName.isEmpty() && !Objects.equals(userModel.getLastName(), lastName)) {
                             userModel.setLastName(lastName);
                         }
                         String email = emailEditText.getText().toString();
-                        if (!lastName.isEmpty() && userModel.getEmail() != email) {
+                        if (!lastName.isEmpty() && !Objects.equals(userModel.getEmail(), email)) {
                             userModel.setEmail(email);
                         }
                         if (userModel instanceof SellerModel) {
                             SellerModel sellerModel = (SellerModel) userModel;
                             String shopName = shopNameEditText.getText().toString();
-                            if (!lastName.isEmpty() && sellerModel.getAddress() != shopName) {
+                            if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), shopName)) {
                                 sellerModel.setShopName(shopName);
                             }
                             String address = addressEditText.getText().toString();
-                            if (!lastName.isEmpty() && sellerModel.getAddress() != address) {
+                            if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), address)) {
                                 sellerModel.setAddress(address);
                             }
                         }
