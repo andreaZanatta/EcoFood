@@ -4,12 +4,12 @@ public class ReviewModel {
     private String title;
     private String description;
     private float grade;
-    private CustomerModel customer;
-    private SellerModel seller;
+    private String customer;
+    private String seller;
 
     public ReviewModel() { }
 
-    public ReviewModel(String title, String description, float grade, CustomerModel customer, SellerModel seller) {
+    public ReviewModel(String title, String description, float grade, String customer, String seller) {
         this.title = title;
         this.description = description;
         this.grade = grade;
@@ -29,11 +29,11 @@ public class ReviewModel {
         this.grade = grade;
     }
 
-    public void setCustomer(CustomerModel customer) {
+    public void setCustomer(String  customer) {
         this.customer = customer;
     }
 
-    public void setSeller(SellerModel seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 
@@ -49,11 +49,11 @@ public class ReviewModel {
         return grade;
     }
 
-    public CustomerModel getCustomer() {
+    public String getCustomer() {
         return customer;
     }
 
-    public SellerModel getSeller() {
+    public String getSeller() {
         return seller;
     }
 }

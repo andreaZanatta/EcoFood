@@ -31,6 +31,13 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string name="loginText">Login!</string>
+    <string name="registerText">Signup!</string>
+    <string name="emailText">insert email...</string>
+    <string name="passwordText">insert password...</string>
+    <string name="text21">Tuo Negozio</string>
+
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
@@ -67,4 +74,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+
 </resources>

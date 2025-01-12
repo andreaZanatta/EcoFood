@@ -1,4 +1,4 @@
-package com.ecolution.ecofood.home;
+package com.ecolution.ecofood.homepages;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

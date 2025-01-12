@@ -1,4 +1,4 @@
-package com.ecolution.ecofood.home;
+package com.ecolution.ecofood.homepages;
 
 import android.content.Intent;
 import android.os.Bundle;

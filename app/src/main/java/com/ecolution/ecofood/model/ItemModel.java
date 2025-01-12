@@ -3,23 +3,28 @@ package com.ecolution.ecofood.model;
 import java.util.Date;
 
 public class ItemModel {
+    String id;
     String nome;
     String categoria;
     double prezzo;
     String descrizione;
     String image;
     Date scadenza;
+    String venditoreId;
 
     public ItemModel() { }
 
-    public ItemModel(String nome, String categoria, double prezzo, String descrizione, String url, Date scadenza){
+    public ItemModel(String itId, String nome, String categoria, double prezzo, String descrizione, String url, Date scadenza, String id){
+        this.id = itId;
         this.nome = nome;
         this.categoria = categoria;
         this.prezzo = prezzo;
         this.descrizione = descrizione;
         this.image = url;
         this.scadenza = scadenza;
+        this.venditoreId = id;
     }
+    public void setId(String id) { this.id = id; }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -43,6 +48,8 @@ public class ItemModel {
         this.scadenza = scadenza;
     }
 
+    public String getId() { return id; }
+
     public String getNome() {
         return nome;
     }
@@ -62,4 +69,6 @@ public class ItemModel {
     public Date getScadenza() {
         return scadenza;
     }
+
+    public String getVenditoreId() { return venditoreId; }
 }

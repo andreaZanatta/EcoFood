@@ -16,16 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ecolution.ecofood.MainActivity;
 import com.ecolution.ecofood.R;
-import com.ecolution.ecofood.home.HomeActivity;
 import com.ecolution.ecofood.model.CustomerModel;
-import com.ecolution.ecofood.model.ItemModel;
 import com.ecolution.ecofood.model.ReviewModel;
 import com.ecolution.ecofood.model.SellerModel;
-import com.ecolution.ecofood.productdetail.NavItemAdapter;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ShopDetailsActivity extends AppCompatActivity {
@@ -85,28 +81,36 @@ public class ShopDetailsActivity extends AppCompatActivity {
     }
 
     private void populateItemModels(List<ReviewModel> reviews) {
+
         reviewList.add(new ReviewModel(
                 "Great Service",
                 "I had an excellent experience shopping here!",
                 4.5f,
-                new CustomerModel(1, "John", "Doe", "john.doe@example.com"),
-                new SellerModel(3, "Alice", "Brown", "alice.brown@example.com", "Alice's Shop", "123 Market Street")
+                // TODO: SISTEMARE id
+                //new CustomerModel(null, "John", "Doe", "john.doe@example.com"),
+                null,
+                null
+                //new SellerModel(null, "Alice", "Brown", "alice.brown@example.com", "Alice's Shop", "123 Market Street")
         ));
 
         reviewList.add(new ReviewModel(
                 "Amazing Products",
                 "The products are top-notch, will definitely recmmend",
                 5.0f,
-                new CustomerModel(2, "Jane", "Smith", "jane.smith@example.com"),
-                new SellerModel(4, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
+                null,
+                //new CustomerModel(null, "Jane", "Smith", "jane.smith@example.com"),
+                null
+                //new SellerModel(null, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
         ));
 
         reviewList.add(new ReviewModel(
                 "Good but Expensive",
                 "The products were good, but the price was a bit high",
                 3.5f,
-                new CustomerModel(1, "John", "Doe", "john.doe@example.com"),
-                new SellerModel(4, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
+                //new CustomerModel(null, "John", "Doe", "john.doe@example.com"),
+                null,
+                null
+                //new SellerModel(null, "Bob", "White", "bob.white@example.com", "Bob's Emporium", "459 Commerce Evenue")
         ));
     }
 

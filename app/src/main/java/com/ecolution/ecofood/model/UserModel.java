@@ -1,9 +1,10 @@
 package com.ecolution.ecofood.model;
 
+
 import java.io.Serializable;
 
 public class UserModel implements Serializable {
-    private int user_id;
+    private String user_id;
     private String firstName;
     private String lastName;
     private String email;
@@ -13,7 +14,7 @@ public class UserModel implements Serializable {
 
     public UserModel() { }
 
-    public UserModel(int id, String fname, String lname, String email, String hash, boolean isSeller, String img){
+    public UserModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img){
         this.user_id = id;
         this.firstName = fname;
         this.lastName = lname;
@@ -23,7 +24,7 @@ public class UserModel implements Serializable {
         this.image = img;
     }
 
-    public UserModel(int id, String fname, String lname, String email, boolean isSeller){
+    public UserModel(String  id, String fname, String lname, String email, boolean isSeller){
         this.user_id = id;
         this.firstName = fname;
         this.lastName = lname;
@@ -31,7 +32,7 @@ public class UserModel implements Serializable {
         this.isSeller = isSeller;
     }
 
-    public void setUser_id(int id) {
+    public void setUser_id(String id) {
         this.user_id = id;
     }
 
@@ -59,7 +60,7 @@ public class UserModel implements Serializable {
         this.image = image;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 

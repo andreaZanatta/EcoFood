@@ -21,8 +21,6 @@ public class NavReviewAdapter extends RecyclerView.Adapter<NavReviewAdapter.View
     Context context;
     List<ReviewModel> reviewModelList;
 
-    public NavReviewAdapter() { }
-
     public NavReviewAdapter(Context context, List<ReviewModel> reviewModelList) {
         this.context = context;
         this.reviewModelList = reviewModelList;
@@ -38,7 +36,7 @@ public class NavReviewAdapter extends RecyclerView.Adapter<NavReviewAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull NavReviewAdapter.ViewHolder holder, int position) {
-        holder.reviewerName.setText(reviewModelList.get(position).getCustomer().getFirstName());
+        holder.reviewerName.setText(reviewModelList.get(position).getCustomer());
         holder.review.setText(reviewModelList.get(position).getDescription());
         holder.ratingBar.setRating(reviewModelList.get(position).getGrade());
     }

@@ -1,17 +1,13 @@
-package com.ecolution.ecofood.home;
+package com.ecolution.ecofood.homepages;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.ecolution.ecofood.R;
-import com.ecolution.ecofood.productdetail.ProductListActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -22,6 +18,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        boolean isSeller = sharedPreferences.getBoolean("userType", false);
+
+        Log.d("debug", "Let's check for is seller: " + isSeller + "!!");
+
+        /*
         boolean isVenditore = getIntent().getBooleanExtra("isVenditore", false);
 
         // Inizializza i bottoni
@@ -98,6 +100,6 @@ public class HomeActivity extends AppCompatActivity {
         transaction.commit();
 
         // Aggiorna il frammento corrente
-        currentFragment = fragment;
+        currentFragment = fragment; */
     }
 }

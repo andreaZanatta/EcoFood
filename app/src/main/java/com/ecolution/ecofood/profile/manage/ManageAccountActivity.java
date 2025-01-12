@@ -1,12 +1,15 @@
 package com.ecolution.ecofood.profile.manage;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -15,9 +18,12 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -40,9 +46,7 @@ public class ManageAccountActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        getUserModelByIntent();
-
-        updateInterface();
+        getUserModel();
     }
 
     private void updateInterface() {
@@ -75,11 +79,28 @@ public class ManageAccountActivity extends AppCompatActivity {
         confirmButton.setOnClickListener(button -> confirmButtonPressed());
     }
 
-    private void getUserModelByIntent() {
-        Serializable userSerializable = getIntent().getSerializableExtra("user");
-        if (userSerializable != null) {
-            userModel = (UserModel) userSerializable;
-        }
+    private void getUserModel() {
+        // session information retrieved
+        SharedPreferences sessionInformations = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        String uId = sessionInformations.getString("uId", "");
+        Log.d("debug", "AAAAAAAAAAAAAAAAAAAAAAA: " + uId);
+
+        db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot us : task.getResult()) {
+                        UserModel user = us.toObject(UserModel.class);
+
+                        if(user.getUser_id().equals(uId)){
+                            userModel = user;
+
+                            updateInterface();
+                        }
+                    }
+                }
+            }
+        });
     }
 
     private void confirmButtonPressed() {
