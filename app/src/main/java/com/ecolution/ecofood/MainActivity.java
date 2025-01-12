@@ -9,13 +9,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ecolution.ecofood.home.HomeActivity;
 import com.ecolution.ecofood.model.UserModel;
 import com.ecolution.ecofood.profile.ProfileActivity;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseFirestore db;
+    String idUtente = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        idUtente = getIntent().getStringExtra("idUtente");
+        db = FirebaseFirestore.getInstance();
 
         Button venditoreButton = findViewById(R.id.button_venditore);
         Button compratoreButton = findViewById(R.id.button_compratore);
@@ -45,12 +52,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openProfile() {
-        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+        db.collection("users")
+                .document(idUtente)
+                .get()
+                .addOnSuccessListener(value -> {
+                    if (value.exists()) {
+                        UserModel user = value.toObject(UserModel.class);
 
-        UserModel user = new UserModel(1, "Andrea", "Zanatta", "883464@stud.unive.it", "", false, "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wikihow.com%2FWhat-Type-of-Person-Am-I&psig=AOvVaw2tXWD_3Ozgzh9oAmFyKpIE&ust=1734286863292000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMip5Zfwp4oDFQAAAAAdAAAAABAE");
+                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+                    } else {
 
-        intent.putExtra("user", user);
-        startActivity(intent);
+                    }
+                });
     }
 }
 

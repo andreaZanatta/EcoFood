@@ -49,7 +49,6 @@ public class ManageAccountActivity extends AppCompatActivity {
         nameEditText.setText(userModel.getFirstName());
         surnameEditText.setText(userModel.getLastName());
         emailEditText.setText(userModel.getEmail());
-        passwordEditText.setText(userModel.getPasswordHash());
 
         Glide.with(this)
                 .load(userModel.getImage())

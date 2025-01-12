@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(this, "Accesso riuscito!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("idUtente", mAuth.getCurrentUser().getUid());
                         startActivity(intent);
                         finish(); // Chiude la LoginActivity
                     } else {
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }
 
 
