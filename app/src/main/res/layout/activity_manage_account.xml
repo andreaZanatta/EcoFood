@@ -1,42 +1,34 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/manageAccountToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manageAccountToolbar">
 
         <!-- Titolo -->
 
         <!-- Nome -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:text="Gestione Profilo"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/textView8"
@@ -45,13 +37,14 @@
             android:text="Nome" />
 
         <EditText
-            android:id="@+id/et_nome"
+            android:id="@+id/firstNameManageProfileEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome"
+            android:background="@drawable/searchbar"
+            android:fontFamily="@font/alexandria_light"
+            android:hint="nome"
             android:inputType="textPersonName"
-            android:padding="12dp"
-            tools:text="Andrea" />
+            android:padding="10dp" />
 
         <!-- Cognome -->
         <TextView
@@ -60,51 +53,51 @@
             android:layout_height="wrap_content"
             android:text="Cognome" />
 
+        <!-- Email -->
         <EditText
-            android:id="@+id/et_cognome"
+            android:id="@+id/lastNameManageProfileEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Cognome"
+            android:background="@drawable/searchbar"
+            android:fontFamily="@font/alexandria_light"
+            android:hint="nome"
             android:inputType="textPersonName"
-            android:padding="12dp"
-            tools:text="Zanatta" />
+            android:padding="10dp" />
 
-        <!-- Email -->
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mail" />
 
+        <!-- Password -->
         <EditText
-            android:id="@+id/et_email"
+            android:id="@+id/emailManageProfileEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            tools:text="883464@stud.unive.it" />
+            android:background="@drawable/searchbar"
+            android:fontFamily="@font/alexandria_light"
+            android:hint="nome"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
 
-        <!-- Password -->
         <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Password" />
 
+        <!-- Scelta del ruolo -->
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/passwordManageProfileEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:text="****" />
+            android:background="@drawable/searchbar"
+            android:fontFamily="@font/alexandria_light"
+            android:hint="nome"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
 
-        <!-- Scelta del ruolo -->
         <TextView
             android:id="@+id/textView13"
             android:layout_width="match_parent"
@@ -112,21 +105,21 @@
             android:text="Tipo di Utente" />
 
         <RadioGroup
-            android:id="@+id/rg_role"
+            android:id="@+id/roleManageProfileRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/rb_cliente"
+                android:id="@+id/sellerManageProfileRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="Cliente" />
 
             <RadioButton
-                android:id="@+id/rb_venditore"
+                android:id="@+id/customerManageProfileRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -134,8 +127,21 @@
         </RadioGroup>
 
         <!-- Campi aggiuntivi per venditore -->
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="40pt"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/nameTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <LinearLayout
-            android:id="@+id/venditore_fields"
+            android:id="@+id/sellerFieldsManageAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -144,7 +150,7 @@
 
             <!-- Nome Negozio -->
             <EditText
-                android:id="@+id/et_nome_negozio"
+                android:id="@+id/shopNameManageAccountEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nome Negozio"
@@ -153,7 +159,7 @@
 
             <!-- Indirizzo -->
             <EditText
-                android:id="@+id/et_indirizzo"
+                android:id="@+id/addressManageAccountEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -170,21 +176,8 @@
             android:layout_height="wrap_content"
             android:text="Immagine Profilo" /> -->
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/nameTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
-
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_conferma"
+            android:id="@+id/confirmManageProfileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -202,6 +195,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
     </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

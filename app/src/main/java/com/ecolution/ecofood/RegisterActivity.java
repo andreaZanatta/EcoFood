@@ -188,10 +188,10 @@ public class RegisterActivity extends AppCompatActivity {
                         UserModel user;
                         // Crea un oggetto utente con i dati
                         if(!isVenditore)
-                            user = new CustomerModel(userId, nome, cognome, email, password, false, profileImageUrl);
+                            user = new CustomerModel(userId, nome, cognome, email, password, profileImageUrl);
                         else {
                             Log.d("Debug", "PROVA LOGO: " + storeLogoUrl);
-                            user = new SellerModel(userId, nome, cognome, email, password, true, profileImageUrl, nomeNegozio, indirizzo, storeLogoUrl);
+                            user = new SellerModel(userId, nome, cognome, email, password, profileImageUrl, nomeNegozio, indirizzo, storeLogoUrl);
                         }
 
 

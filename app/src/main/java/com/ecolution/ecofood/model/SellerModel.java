@@ -1,17 +1,15 @@
 package com.ecolution.ecofood.model;
 
-import android.app.Notification;
-
 public class SellerModel extends UserModel{
     private String shopName;
     private String address;
     private String logo;
-    private Notification notification;
+    private NotificationType notification;
 
-    public SellerModel() { }
+    public SellerModel() { super(true); }
 
-    public SellerModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img, String shopName, String address, String logo, Notification notification) {
-        super(id, fname, lname, email, hash, isSeller, img);
+    public SellerModel(String id, String fname, String lname, String email, String hash, String img, String shopName, String address, String logo, NotificationType notification) {
+        super(id, fname, lname, email, hash, true, img);
         this.shopName = shopName;
         this.address = address;
         this.notification = notification;
@@ -21,13 +19,15 @@ public class SellerModel extends UserModel{
         super(id, fname, lname, email, true);
         this.shopName = shopName;
         this.address = address;
+        this.notification = NotificationType.All;
     }
 
-    public SellerModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img, String shopName, String address, String logo) {
-        super(id, fname, lname, email, hash, isSeller, img);
+    public SellerModel(String id, String fname, String lname, String email, String hash, String img, String shopName, String address, String logo) {
+        super(id, fname, lname, email, hash, true, img);
         this.shopName = shopName;
         this.address = address;
         this.logo = logo;
+        this.notification = NotificationType.All;
     }
 
     public void setShopName(String nm) { this.shopName = nm; }
@@ -38,9 +38,9 @@ public class SellerModel extends UserModel{
 
     public String getAddress() { return this.address; }
 
-    public void setNotification(Notification nt) { this.notification = nt; }
+    public void setNotification(NotificationType nt) { this.notification = nt; }
 
-    public Notification getNotification() { return this.notification; }
+    public NotificationType getNotification() { return this.notification; }
 
     public String getLogo() { return this.logo; }
 }

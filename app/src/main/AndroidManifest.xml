@@ -23,10 +23,10 @@
             android:exported="false" /> <!-- Register Activity -->
         <activity android:name=".RegisterActivity" />
         <activity
-            android:name=".profile.manage.ManageAccountActivity"
+            android:name=".profile.manageAccount.ManageAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".profile.manage.ManageNotificationActivity"
+            android:name=".profile.manageNotification.ManageNotificationActivity"
             android:exported="false" />
         <activity
             android:name=".profile.ProfileActivity"

@@ -29,11 +29,12 @@
 
         <ImageView
             android:id="@+id/profileImage"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_width="0dp"
+            android:layout_height="65pt"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/nameTextView"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:text="Andrea Zanatta"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/emailTextView"
@@ -58,7 +59,7 @@
             android:id="@+id/emailTextView"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="10dp"
             android:text="883464@stud.unive.it"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,11 +69,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/modifyProfileButton"
-            android:layout_width="match_parent"
+            android:layout_width="100pt"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
             android:background="@drawable/button_background"
             android:fontFamily="@font/alexandria_light"
             android:padding="6dp"
@@ -90,20 +89,19 @@
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="Notifiche"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/modifyProfileButton" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/manageNotificationButton"
             android:layout_width="36dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="27dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/modifyProfileButton"
+            app:layout_constraintTop_toTopOf="@+id/textView2"
             app:srcCompat="@drawable/edit_pen" />
 
         <androidx.recyclerview.widget.RecyclerView

@@ -3,13 +3,11 @@ package com.ecolution.ecofood.profile;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -19,21 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.ecolution.ecofood.R;
-import com.ecolution.ecofood.model.SellerModel;
-import com.ecolution.ecofood.model.UserModel;
-import com.ecolution.ecofood.profile.manage.ManageAccountActivity;
+import com.ecolution.ecofood.model.*;
+import com.ecolution.ecofood.profile.manageAccount.ManageAccountActivity;
+import com.ecolution.ecofood.profile.manageNotification.ManageNotificationActivity;
 import com.ecolution.ecofood.utils.TabBar;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -41,15 +34,15 @@ import java.util.Optional;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    ImageView profileImage;
-    TextView nameTextView;
-    TextView emailTextView;
+    ImageView profileImage, manageNotificationButton;
+    TextView nameTextView, emailTextView;
     Button modifyProfileButton;
     RecyclerView notificationRecyclerView;
     UserModel userModel;
     ArrayList<NotificationModel> notifications = new ArrayList<>();
     TabBar tabBar;
 
+    private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
     NotificationAdapter notificationAdapter;
@@ -58,6 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
         SharedPreferences sessionInformations = getSharedPreferences("AppPrefs", MODE_PRIVATE);
@@ -75,8 +69,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         prepareActivity();
         getUserModel();
-
-
     }
 
     private void prepareActivity() {
@@ -92,36 +84,38 @@ public class ProfileActivity extends AppCompatActivity {
         nameTextView = findViewById(R.id.nameTextView);
         emailTextView = findViewById(R.id.emailTextView);
         modifyProfileButton = findViewById(R.id.modifyProfileButton);
+        manageNotificationButton = findViewById(R.id.manageNotificationButton);
         notificationRecyclerView = findViewById(R.id.notificationRecyclerView);
         notificationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         modifyProfileButton.setOnClickListener(button -> openManageProfile());
+        manageNotificationButton.setOnClickListener(view -> openManageNotificationSetting());
 
         notificationAdapter = new NotificationAdapter(notifications);
         notificationRecyclerView.setAdapter(notificationAdapter);
     }
 
     private void getUserModel() {
-        // session information retrieved
-        SharedPreferences sessionInformations = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        String uId = sessionInformations.getString("uId", "");
+        String idUtente = mAuth.getUid();
+        if (idUtente != null) {
+            db.collection("users")
+                    .document(idUtente)
+                    .get()
+                    .addOnSuccessListener(value -> {
+                        if (value.exists()) {
+                            boolean isSeller = value.getBoolean("seller");
 
-        db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()) {
-                    for(QueryDocumentSnapshot us : task.getResult()){
-                        UserModel user = us.toObject(UserModel.class);
-                        if(user.getUser_id().equals(uId)) {
-                            userModel = user;
+                            if (isSeller) {
+                                userModel = value.toObject(SellerModel.class);
+                            } else {
+                                userModel = value.toObject(CustomerModel.class);
+                            }
 
                             getNotifications();
                             updateInterface();
                         }
-                    }
-                }
-            }
-        });
+                    });
+        }
     }
 
     private void updateInterface() {
@@ -183,6 +177,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void openManageProfile() {
         Intent intent = new Intent(ProfileActivity.this, ManageAccountActivity.class);
+        intent.putExtra("user", userModel);
+        startActivity(intent);
+    }
+
+    private void openManageNotificationSetting() {
+        Intent intent = new Intent(ProfileActivity.this, ManageNotificationActivity.class);
         intent.putExtra("user", userModel);
         startActivity(intent);
     }
