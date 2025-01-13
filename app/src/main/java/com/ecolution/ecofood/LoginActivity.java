@@ -89,7 +89,39 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void manageSession(String uId){
-        db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("users").document(uId).get().addOnSuccessListener(result -> {
+
+            if (result != null) {
+                SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                boolean isSeller = result.getBoolean("seller");
+                UserModel userModel;
+                Intent intent;
+                if (isSeller) {
+                    SellerModel sellerModel = result.toObject(SellerModel.class);
+                    userModel = sellerModel;
+
+                    editor.putString("shopName", sellerModel.getShopName());
+
+                    intent = new Intent(LoginActivity.this, ProductListActivity.class);
+                } else {
+                    userModel = result.toObject(CustomerModel.class);
+                    intent = new Intent(LoginActivity.this, ShopListActivity.class);
+                }
+
+                editor.putString("uId", userModel.getUser_id());
+                editor.putString("email", userModel.getEmail());
+                editor.putBoolean("userType", userModel.isSeller());
+                editor.apply();
+
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        /*
+        db.collection("users").document(uId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {
@@ -124,6 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+         */
     }
 }
     /*
