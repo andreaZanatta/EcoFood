@@ -54,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        prepareActivity();
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -64,8 +65,8 @@ public class ProfileActivity extends AppCompatActivity {
         // tab bar managed
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         tabBar = new TabBar(this, bottomNav);
-        tabBar.updateSelectedItem(R.id.shopList); // Set the appropriate menu item ID
         tabBar.setupBottomNavigationMenu(bottomNav.getMenu(), isSeller);
+        tabBar.updateSelectedItem(R.id.profile); // Set the appropriate menu item ID
         bottomNav.setOnItemSelectedListener(item -> {
             tabBar.handleNavigation(item);
             return  true;
@@ -76,7 +77,6 @@ public class ProfileActivity extends AppCompatActivity {
                 result -> getUserModel()
         );
 
-        prepareActivity();
         getUserModel();
     }
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,7 +17,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.bumptech.glide.Glide;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.SellerModel;
 import com.ecolution.ecofood.model.UserModel;
@@ -34,7 +32,6 @@ public class ManageAccountActivity extends AppCompatActivity {
     EditText nameEditText, surnameEditText, emailEditText, passwordEditText, shopNameEditText, addressEditText;
     RadioGroup roleRadioGroup;
     RadioButton customerRadioButton, sellerRadioButton;
-    ImageView profileImageView;
     Button confirmButton;
     LinearLayout sellerFieldLinearLayout;
 
@@ -75,10 +72,6 @@ public class ManageAccountActivity extends AppCompatActivity {
             sellerRadioButton.setActivated(false);
             sellerFieldLinearLayout.setVisibility(View.GONE);
         }
-
-        Glide.with(this)
-                .load(userModel.getImage())
-                .into(profileImageView);
     }
 
     private void prepareActivity() {
@@ -97,7 +90,6 @@ public class ManageAccountActivity extends AppCompatActivity {
         roleRadioGroup = findViewById(R.id.roleManageProfileRadio);
         customerRadioButton = findViewById(R.id.customerManageProfileRadio);
         sellerRadioButton = findViewById(R.id.sellerManageProfileRadio);
-        profileImageView = findViewById(R.id.imageView5);
         confirmButton = findViewById(R.id.confirmManageProfileButton);
         shopNameEditText = findViewById(R.id.shopNameManageAccountEditText);
         addressEditText = findViewById(R.id.addressManageAccountEditText);
@@ -140,25 +132,25 @@ public class ManageAccountActivity extends AppCompatActivity {
 
     private Map<String, Object> getValuesToUpdate() {
         Map<String, Object> updates = new HashMap<>();
-        String firstName = nameEditText.getText().toString();
+        String firstName = nameEditText.getText().toString().trim();
         if (!firstName.isEmpty() && !Objects.equals(userModel.getFirstName(), firstName)) {
             updates.put("firstName", firstName);
         }
-        String lastName = surnameEditText.getText().toString();
+        String lastName = surnameEditText.getText().toString().trim();
         if (!lastName.isEmpty() && !Objects.equals(userModel.getLastName(), lastName)) {
             updates.put("lastName", lastName);
         }
-        String email = emailEditText.getText().toString();
+        String email = emailEditText.getText().toString().trim();
         if (!lastName.isEmpty() && !Objects.equals(userModel.getEmail(), email)) {
             updates.put("email", email);
         }
         if (userModel instanceof SellerModel) {
             SellerModel sellerModel = (SellerModel) userModel;
-            String shopName = shopNameEditText.getText().toString();
+            String shopName = shopNameEditText.getText().toString().trim();
             if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), shopName)) {
                 updates.put("shopName", shopName);
             }
-            String address = addressEditText.getText().toString();
+            String address = addressEditText.getText().toString().trim();
             if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), address)) {
                 updates.put("address", address);
             }
@@ -177,31 +169,33 @@ public class ManageAccountActivity extends AppCompatActivity {
                     .document(userModel.getUser_id())
                     .update(updates)
                     .addOnCompleteListener(result -> {
-                        String firstName = nameEditText.getText().toString();
+                        String firstName = nameEditText.getText().toString().trim();
                         if (!firstName.isEmpty() && !Objects.equals(userModel.getFirstName(), firstName)) {
                             userModel.setFirstName(firstName);
                         }
-                        String lastName = surnameEditText.getText().toString();
+                        String lastName = surnameEditText.getText().toString().trim();
                         if (!lastName.isEmpty() && !Objects.equals(userModel.getLastName(), lastName)) {
                             userModel.setLastName(lastName);
                         }
-                        String email = emailEditText.getText().toString();
+                        String email = emailEditText.getText().toString().trim();
                         if (!lastName.isEmpty() && !Objects.equals(userModel.getEmail(), email)) {
                             userModel.setEmail(email);
                         }
                         if (userModel instanceof SellerModel) {
                             SellerModel sellerModel = (SellerModel) userModel;
-                            String shopName = shopNameEditText.getText().toString();
+                            String shopName = shopNameEditText.getText().toString().trim();
                             if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), shopName)) {
                                 sellerModel.setShopName(shopName);
                             }
-                            String address = addressEditText.getText().toString();
+                            String address = addressEditText.getText().toString().trim();
                             if (!lastName.isEmpty() && !Objects.equals(sellerModel.getAddress(), address)) {
                                 sellerModel.setAddress(address);
                             }
                         }
                         backToProfileActivity();
                     });
+        } else {
+            backToProfileActivity();
         }
     }
 }
