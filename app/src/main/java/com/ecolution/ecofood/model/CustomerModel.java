@@ -1,30 +1,26 @@
 package com.ecolution.ecofood.model;
 
-import android.app.Notification;
-
 public class CustomerModel extends UserModel {
-    private Notification notification;
+    private NotificationType notification;
 
-    public CustomerModel() { super(); }
+    public CustomerModel() { super(false); }
 
-    public CustomerModel(Notification notification) {
-        this.notification = notification;
-    }
-
-    public CustomerModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img, Notification notification) {
-        super(id, fname, lname, email, hash, isSeller, img);
+    public CustomerModel(String id, String fname, String lname, String email, String hash, String img, NotificationType notification) {
+        super(id, fname, lname, email, hash, false, img);
         this.notification = notification;
     }
 
     public CustomerModel(String id, String fname, String lname, String email) {
         super(id, fname, lname, email, false);
+        this.notification = NotificationType.All;
     }
 
-    public CustomerModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img) {
+    public CustomerModel(String id, String fname, String lname, String email, String hash, String img) {
         super(id, fname, lname, email, false);
+        this.notification = NotificationType.All;
     }
 
-    public void setNotification(Notification nt) { this.notification = nt; }
+    public void setNotification(NotificationType nt) { this.notification = nt; }
 
-    public Notification getNotification() { return this.notification; }
+    public NotificationType getNotification() { return this.notification; }
 }

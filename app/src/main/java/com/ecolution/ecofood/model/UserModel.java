@@ -1,6 +1,5 @@
 package com.ecolution.ecofood.model;
 
-
 import java.io.Serializable;
 
 public class UserModel implements Serializable {
@@ -12,7 +11,9 @@ public class UserModel implements Serializable {
     private boolean isSeller;
     private String image;
 
-    public UserModel() { }
+    public UserModel(boolean isSeller) {
+        this.isSeller = isSeller;
+    }
 
     public UserModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img){
         this.user_id = id;
