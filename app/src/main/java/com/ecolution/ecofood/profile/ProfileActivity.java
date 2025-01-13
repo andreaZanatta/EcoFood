@@ -60,20 +60,22 @@ public class ProfileActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+        prepareActivity();
+
         SharedPreferences sessionInformations = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         boolean isSeller = sessionInformations.getBoolean("userType", false);
 
         // tab bar managed
-        /*BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         tabBar = new TabBar(this, bottomNav);
-        tabBar.updateSelectedItem(R.id.shopList); // Set the appropriate menu item ID
         tabBar.setupBottomNavigationMenu(bottomNav.getMenu(), isSeller);
+        tabBar.updateSelectedItem(R.id.profile); // Set the appropriate menu item ID
         bottomNav.setOnItemSelectedListener(item -> {
             tabBar.handleNavigation(item);
             return  true;
-        });*/
+        });
 
-        prepareActivity();
+
         getUserModel();
 
 

@@ -1,5 +1,6 @@
 package com.ecolution.ecofood.profile.manage;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.UserModel;
+import com.ecolution.ecofood.profile.ProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -106,16 +108,15 @@ public class ManageAccountActivity extends AppCompatActivity {
 
     private void confirmButtonPressed() {
         db.collection("users")
-                .whereEqualTo("id", userModel.getUser_id())
+                .whereEqualTo("user_id", userModel.getUser_id())
                 .get()
                 .addOnSuccessListener(snap -> {
                     for (QueryDocumentSnapshot document: snap) {
                         DocumentReference docRef = document.getReference();
-
                         Map<String, Object> updates = new HashMap<>();
-                        updates.put("nome", nameEditText.getText());
-                        updates.put("cognome", surnameEditText.getText());
-                        updates.put("email", emailEditText.getText());
+                        updates.put("firstName", nameEditText.getText().toString().trim());
+                        updates.put("lastName", surnameEditText.getText().toString().trim());
+                        updates.put("email", emailEditText.getText().toString().trim());
 
                         docRef.update(updates).addOnSuccessListener(x -> backToProfileActivity());
                     }
@@ -123,6 +124,7 @@ public class ManageAccountActivity extends AppCompatActivity {
     }
 
     private void backToProfileActivity() {
-
+        Intent intent = new Intent(ManageAccountActivity.this, ProfileActivity.class);
+        startActivity(intent);
     }
 }
