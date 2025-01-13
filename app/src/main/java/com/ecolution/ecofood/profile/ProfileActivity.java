@@ -23,6 +23,7 @@ import com.ecolution.ecofood.model.*;
 import com.ecolution.ecofood.profile.manageAccount.ManageAccountActivity;
 import com.ecolution.ecofood.profile.manageNotification.ManageNotificationActivity;
 import com.ecolution.ecofood.utils.TabBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
@@ -61,14 +62,14 @@ public class ProfileActivity extends AppCompatActivity {
         boolean isSeller = sessionInformations.getBoolean("userType", false);
 
         // tab bar managed
-        /*BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         tabBar = new TabBar(this, bottomNav);
         tabBar.updateSelectedItem(R.id.shopList); // Set the appropriate menu item ID
         tabBar.setupBottomNavigationMenu(bottomNav.getMenu(), isSeller);
         bottomNav.setOnItemSelectedListener(item -> {
             tabBar.handleNavigation(item);
             return  true;
-        });*/
+        });
 
         activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
