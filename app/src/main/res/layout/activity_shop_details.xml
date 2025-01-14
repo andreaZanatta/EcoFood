@@ -58,7 +58,10 @@
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/reviewsText"
-        android:layout_marginStart="10dp" />
+        android:layout_marginStart="10dp"
+        android:progressTint="@color/gold"
+        android:progressTintMode="src_in"
+        android:isIndicator="true"/>
 
 
     <TextView

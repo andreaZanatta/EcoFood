@@ -50,5 +50,15 @@
             android:progressTintMode="src_in"
             android:isIndicator="true"/>
 
+        <ImageButton
+            android:id="@+id/favourite_button"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="-58dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/notfav"
+            android:scaleType="centerInside"
+            />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

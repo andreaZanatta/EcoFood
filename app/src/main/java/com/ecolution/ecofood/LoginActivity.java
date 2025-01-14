@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("uId", user.getUser_id());
                             editor.putString("email", user.getEmail());
+                            editor.putString("firstName", user.getFirstName());
                             editor.putBoolean("userType", user.isSeller());
 
                             Intent intent;

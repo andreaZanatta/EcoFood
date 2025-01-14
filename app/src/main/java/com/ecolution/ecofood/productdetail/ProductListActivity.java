@@ -108,7 +108,7 @@ public class ProductListActivity extends AppCompatActivity {
             //populateItemModels(items);
         });
 
-        navItemAdapter = new NavItemAdapter(this, items, isSeller);
+        navItemAdapter = new NavItemAdapter(ProductListActivity.this, items, isSeller);
         recyclerView.setAdapter(navItemAdapter);
 
         shopNameView = findViewById(R.id.shopName);

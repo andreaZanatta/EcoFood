@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="16dp"
+    android:id="@+id/add_review_layout">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lascia una Recensione!"
+        android:fontFamily="@font/alexandria_bold"
+        android:textSize="20sp"
+        android:textAlignment="center" />
+
+    <RatingBar
+        android:id="@+id/review_rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:progressTint="@color/gold"/>
+
+
+    <EditText
+        android:id="@+id/review_description_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Scrivi qua!"
+        android:fontFamily="@font/alexandria_light"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/postReviewButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/alexandria_light"
+        android:padding="6dp"
+        android:text="Invia la tua Recensione"
+        android:textSize="16sp"
+        app:backgroundTint="@null"
+        app:elevation="4dp" />
+</LinearLayout>

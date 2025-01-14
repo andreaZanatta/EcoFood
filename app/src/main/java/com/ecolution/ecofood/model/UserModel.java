@@ -1,6 +1,9 @@
 package com.ecolution.ecofood.model;
 
+import android.util.Log;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class UserModel implements Serializable {
     private String user_id;
@@ -10,12 +13,16 @@ public class UserModel implements Serializable {
     private String passwordHash;
     private boolean isSeller;
     private String image;
+    private List<String> favourites;
+
+    public UserModel() { }
 
     public UserModel(boolean isSeller) {
         this.isSeller = isSeller;
+
     }
 
-    public UserModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img){
+    public UserModel(String id, String fname, String lname, String email, String hash, boolean isSeller, String img, List<String> favourites){
         this.user_id = id;
         this.firstName = fname;
         this.lastName = lname;
@@ -23,6 +30,7 @@ public class UserModel implements Serializable {
         this.passwordHash = hash;
         this.isSeller = isSeller;
         this.image = img;
+        this.favourites = favourites;
     }
 
     public UserModel(String  id, String fname, String lname, String email, boolean isSeller){
@@ -61,6 +69,8 @@ public class UserModel implements Serializable {
         this.image = image;
     }
 
+    public void setFavourites(List<String> favourites) { this.favourites = favourites; }
+
     public String getUser_id() {
         return user_id;
     }
@@ -90,4 +100,6 @@ public class UserModel implements Serializable {
     }
 
     public String getFullName() { return firstName+" "+lastName; }
+
+    public List<String> getFavourites() { return favourites; }
 }

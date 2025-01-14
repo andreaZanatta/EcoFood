@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 
 import com.ecolution.ecofood.R;
+import com.ecolution.ecofood.favourites.FavouritesListActivity;
 import com.ecolution.ecofood.homepages.HomeActivity;
 import com.ecolution.ecofood.homepages.MapActivity;
 import com.ecolution.ecofood.productdetail.ProductListActivity;
@@ -41,7 +42,7 @@ public class TabBar {
         if(itemId == R.id.personalShop) context.startActivity(new Intent(context, ProductListActivity.class));
         else if(itemId == R.id.shopList) context.startActivity(new Intent(context, ShopListActivity.class));
         else if(itemId == R.id.mapView) context.startActivity(new Intent(context, MapActivity.class));
-        else if(itemId == R.id.favorites) context.startActivity(new Intent(context, HomeActivity.class));
+        else if(itemId == R.id.favorites) context.startActivity(new Intent(context, FavouritesListActivity.class));
         else if(itemId == R.id.profile) context.startActivity(new Intent(context, ProfileActivity.class));
         else Log.e("Error", "Error On Navigation");
     }

@@ -28,6 +28,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -191,7 +192,7 @@ public class RegisterActivity extends AppCompatActivity {
                             user = new CustomerModel(userId, nome, cognome, email, password, profileImageUrl);
                         else {
                             Log.d("Debug", "PROVA LOGO: " + storeLogoUrl);
-                            user = new SellerModel(userId, nome, cognome, email, password, profileImageUrl, nomeNegozio, indirizzo, storeLogoUrl);
+                            user = new SellerModel(userId, nome, cognome, email, password, profileImageUrl, new ArrayList<>(), nomeNegozio, indirizzo, storeLogoUrl);
                         }
 
 

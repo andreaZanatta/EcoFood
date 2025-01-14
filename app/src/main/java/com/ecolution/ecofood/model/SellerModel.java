@@ -1,15 +1,20 @@
 package com.ecolution.ecofood.model;
 
+import java.util.List;
+
 public class SellerModel extends UserModel{
     private String shopName;
     private String address;
     private String logo;
     private NotificationType notification;
 
-    public SellerModel() { super(true); }
+    public SellerModel() {
+        super();
+        //super(true);
+    }
 
-    public SellerModel(String id, String fname, String lname, String email, String hash, String img, String shopName, String address, String logo, NotificationType notification) {
-        super(id, fname, lname, email, hash, true, img);
+    public SellerModel(String id, String fname, String lname, String email, String hash, String img, List<String> fav, String shopName, String address, String logo, NotificationType notification) {
+        super(id, fname, lname, email, hash, true, img, fav);
         this.shopName = shopName;
         this.address = address;
         this.notification = notification;
@@ -22,8 +27,8 @@ public class SellerModel extends UserModel{
         this.notification = NotificationType.All;
     }
 
-    public SellerModel(String id, String fname, String lname, String email, String hash, String img, String shopName, String address, String logo) {
-        super(id, fname, lname, email, hash, true, img);
+    public SellerModel(String id, String fname, String lname, String email, String hash, String img, List<String> fav, String shopName, String address, String logo) {
+        super(id, fname, lname, email, hash, true, img, fav);
         this.shopName = shopName;
         this.address = address;
         this.logo = logo;

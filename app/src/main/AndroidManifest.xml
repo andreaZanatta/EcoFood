@@ -4,11 +4,12 @@
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.createWriteRequest" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EcoFood"
         tools:targetApi="31">
+        <activity
+            android:name=".favourites.FavouritesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerProductListActivity"
+            android:exported="false" />
         <activity
             android:name=".homepages.MapActivity"
             android:exported="false" />
@@ -53,7 +60,6 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,7 +70,8 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.EcoFood">
-<!--
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -75,7 +82,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAUgHYjN4Aw8KoD69_OwgZ4ku6kUpCR_oI" />

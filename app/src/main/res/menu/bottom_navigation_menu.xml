@@ -19,7 +19,7 @@
 
     <item
         android:id="@+id/favorites"
-        android:icon="@drawable/favorites"
+        android:icon="@drawable/notfav"
         android:title="Favorites" />
 
     <item

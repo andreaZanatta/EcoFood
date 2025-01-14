@@ -46,10 +46,10 @@ public class NavItemAdapter extends RecyclerView.Adapter<NavItemAdapter.ViewHold
     public void onBindViewHolder(@NonNull NavItemAdapter.ViewHolder holder, int position) {
         ItemModel item = list.get(position);
 
-        Glide.with(context).load(list.get(position).getImage()).into(holder.imageView);
+        Glide.with(context).load(list.get(position).getImage()).placeholder(R.drawable.icona).error(R.drawable.icona).into(holder.imageView);
         holder.title.setText(list.get(position).getNome());
         holder.category.setText(list.get(position).getCategoria());
-        holder.price.setText( String.format(Double.toString( list.get(position).getPrezzo())) );
+        holder.price.setText(String.format("%s€", String.format(Double.toString(list.get(position).getPrezzo()))));
 
         holder.dashboardItem.setOnClickListener(v -> {
             showDialog(item);
@@ -58,46 +58,61 @@ public class NavItemAdapter extends RecyclerView.Adapter<NavItemAdapter.ViewHold
 
     private void showDialog(ItemModel it) {
         // Inflate the dialog layout
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_item_page, null);
 
-        // Initialize the dialog
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
-        builder.setView(dialogView);
+        if (isSeller) {
+            View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_item_page, null);
+            // Initialize the dialog
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+            builder.setView(dialogView);
 
-        EditText editProductName = dialogView.findViewById(R.id.edit_product_name);
-        EditText editProductCategory = dialogView.findViewById(R.id.edit_product_category);
-        EditText editProductPrice = dialogView.findViewById(R.id.edit_product_price);
-        EditText editProductDescription = dialogView.findViewById(R.id.edit_product_description);
-        Button saveButton = dialogView.findViewById(R.id.save_button);
+            EditText editProductName = dialogView.findViewById(R.id.edit_product_name);
+            EditText editProductCategory = dialogView.findViewById(R.id.edit_product_category);
+            EditText editProductPrice = dialogView.findViewById(R.id.edit_product_price);
+            EditText editProductDescription = dialogView.findViewById(R.id.edit_product_description);
+            Button saveButton = dialogView.findViewById(R.id.save_button);
 
-        editProductName.setText(it.getNome());
-        editProductCategory.setText(it.getCategoria());
-        editProductPrice.setText(String.valueOf(it.getPrezzo()));
-        editProductDescription.setText(it.getDescrizione());
+            editProductName.setText(it.getNome());
+            editProductCategory.setText(it.getCategoria());
+            editProductPrice.setText(String.valueOf(it.getPrezzo()));
+            editProductDescription.setText(it.getDescrizione());
 
-        android.app.AlertDialog dialog = builder.create();
-        dialog.show();
+            android.app.AlertDialog dialog = builder.create();
+            dialog.show();
 
-        saveButton.setOnClickListener(v -> {
-            // Collect updated data
-            String updatedName = editProductName.getText().toString();
-            String updatedCategory = editProductCategory.getText().toString();
-            double updatedPrice = Double.parseDouble(editProductPrice.getText().toString());
-            String updatedDescription = editProductDescription.getText().toString();
+            saveButton.setOnClickListener(v -> {
+                // Collect updated data
+                String updatedName = editProductName.getText().toString();
+                String updatedCategory = editProductCategory.getText().toString();
+                double updatedPrice = Double.parseDouble(editProductPrice.getText().toString());
+                String updatedDescription = editProductDescription.getText().toString();
 
-            // Save changes to database
+                // Save changes to database
 
-            saveProductData(it.getId(), updatedName, updatedCategory, updatedPrice);
+                saveProductData(it.getId(), updatedName, updatedCategory, updatedPrice);
 
-            // Update local list and notify adapter
-            it.setNome(updatedName);
-            it.setCategoria(updatedCategory);
-            it.setPrezzo(updatedPrice);
-            notifyDataSetChanged();
+                // Update local list and notify adapter
+                it.setNome(updatedName);
+                it.setCategoria(updatedCategory);
+                it.setPrezzo(updatedPrice);
+                notifyDataSetChanged();
 
-            // Close dialog
-            dialog.dismiss();
-        });
+                // Close dialog
+                dialog.dismiss();
+            });
+        } else {
+            View dialogView = LayoutInflater.from(context).inflate(R.layout.customer_dialog_item_page, null);
+            // Initialize the dialog
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+            builder.setView(dialogView);
+            TextView productName = dialogView.findViewById(R.id.product_name);
+            TextView productDescription = dialogView.findViewById(R.id.product_description);
+
+            productName.setText(it.getNome());
+            productDescription.setText(it.getDescrizione());
+
+            android.app.AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 
     private void saveProductData(String productId, String name, String category, double price) {
@@ -120,7 +135,7 @@ public class NavItemAdapter extends RecyclerView.Adapter<NavItemAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView title, category, price;
+        TextView title, category, price, description;
         ImageButton dashboardItem;
 
         public ViewHolder(@NonNull View itemView) {

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.ecolution.ecofood.LoginActivity;
 import com.ecolution.ecofood.R;
 import com.ecolution.ecofood.model.*;
 import com.ecolution.ecofood.profile.manageAccount.ManageAccountActivity;
@@ -39,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     ImageView profileImage, manageNotificationButton;
     TextView nameTextView, emailTextView;
-    Button modifyProfileButton;
+    Button modifyProfileButton, logoutButton;
     RecyclerView notificationRecyclerView;
     UserModel userModel;
     ArrayList<NotificationModel> notifications = new ArrayList<>();
@@ -72,10 +73,13 @@ public class ProfileActivity extends AppCompatActivity {
             return  true;
         });
 
+
         activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> getUserModel()
         );
+
+        logoutButton.setOnClickListener(v -> logout());
 
         getUserModel();
     }
@@ -95,6 +99,7 @@ public class ProfileActivity extends AppCompatActivity {
         modifyProfileButton = findViewById(R.id.modifyProfileButton);
         manageNotificationButton = findViewById(R.id.manageNotificationButton);
         notificationRecyclerView = findViewById(R.id.notificationRecyclerView);
+        logoutButton = findViewById(R.id.logoutButton);
         notificationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         modifyProfileButton.setOnClickListener(button -> openManageProfile());
@@ -194,5 +199,16 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(ProfileActivity.this, ManageNotificationActivity.class);
         intent.putExtra("user", userModel);
         activityResultLauncher.launch(intent);
+    }
+
+    private void logout(){
+        SharedPreferences sharedPreferences = this.getSharedPreferences("AppPrefs", this.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        this.startActivity(intent);
     }
 }
