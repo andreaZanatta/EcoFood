@@ -9,6 +9,17 @@
 
 ---
 
+## ⛓ **Link github**
+https://github.com/andreaZanatta/EcoFood
+
+---
+
+## ✅ **Installazione**
+Per quanto riguarda l'installazione da questo Github basterà scaricare lo zip del codice e poi attraverso la build.gradle si installerà l'app sul telefono.
+Nel caso futuro in cui l'app potrà trovarsi sul Play Store allora basterà installarla da li.
+
+---
+
 ## 📋 **Descrizione del Progetto**
 **Ecofood** è un'applicazione dedicata a chi desidera contribuire a rendere il mondo più eco-friendly, promuovendo la prevenzione dello spreco alimentare e incentivando il consumo di cibo prodotto in maniera sostenibile. L'app punta ad aumentare la consapevolezza del consumatore, offrendo una piattaforma simile a **Google Maps**, ma focalizzata esclusivamente sui negozi alimentari. L'obiettivo principale è fornire una panoramica chiara e dettagliata sulle caratteristiche ambientali e nutrizionali dei prodotti offerti da ciascun negozio.
 
@@ -37,7 +48,6 @@ Ogni negozio presente nell'app è classificato in base ai seguenti parametri chi
 
 ## 🚀 **Funzionalità Attuali**
 
-- Sviluppata la parte base dell'applicazione quindi login e registrazione. 
-- Completato il login si passa a una schermata che verrà rimpiazzata con delle altre schermate diverse in base al ruolo che è stato dichiarato durante la registrazione (venditore o compratore)
-- Per tutto il resto dell'applicazione la linea guida che si è tenuta per questa consegna è che le interazioni tra le pagine funzionino e siano sviluppate ma sono statiche ovvero tutto ciò che richiede una aggiunta, rimozione, ecc... è attualmente sviluppato a livello di codice, o comunque è preimpostato e quindi non è momentaneamente dinamica con l'uso del database (Firebase).
+- Sviluppato login e registrazione. 
+- Completato il login si passa alla Homepage in base al ruolo che è stato dichiarato durante la registrazione (venditore o compratore)
 
