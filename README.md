@@ -15,9 +15,7 @@ https://github.com/andreaZanatta/EcoFood
 ---
 
 ## ✅ **Installazione**
-Per quanto riguarda l'installazione da questo Github basterà scaricare lo zip del codice e poi attraverso la build.gradle si installerà l'app sul telefono.
-Oppure collegare il telefono al Pc tramite Usb ed eseguire il codice. (Bisogna abilitare impostazione sviluppatore e debug USB).
-Nel caso futuro in cui l'app potrà trovarsi sul Play Store allora basterà installarla da li.
+Per quanto riguarda l'installazione da questo Github basterà scaricare lo zip del codice, estrarlo e salvarlo in una cartella a piacere, avviare Android Studio, collegare il telefono al Pc tramite Usb ed eseguire il codice. (Bisogna abilitare impostazione sviluppatore e debug USB).
 
 ---
 
