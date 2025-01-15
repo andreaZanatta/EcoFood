@@ -16,6 +16,7 @@ https://github.com/andreaZanatta/EcoFood
 
 ## ✅ **Installazione**
 Per quanto riguarda l'installazione da questo Github basterà scaricare lo zip del codice e poi attraverso la build.gradle si installerà l'app sul telefono.
+Oppure collegare il telefono al Pc tramite Usb ed eseguire il codice. (Bisogna abilitare impostazione sviluppatore e debug USB).
 Nel caso futuro in cui l'app potrà trovarsi sul Play Store allora basterà installarla da li.
 
 ---
@@ -50,4 +51,9 @@ Ogni negozio presente nell'app è classificato in base ai seguenti parametri chi
 
 - Sviluppato login e registrazione. 
 - Completato il login si passa alla Homepage in base al ruolo che è stato dichiarato durante la registrazione (venditore o compratore)
+  Se venditore allora visualizzerà i suoi prodotti, con possibilità di modificarli o aggiungerli.
+  Se consumatore allora visualizzerà lista di negozi disponibili.
+- Possibilità di vedere i negozi o tramite lista o tramite mappa interattiva Maps, e poi sfogliare i suoi prodotti.
+- Possibilità di aggiungere negozi preferiti e visualizzare solo quelli tramite apposita sezione.
+- Possibilità di gestire il proprio profilo, quindi info personali, notifiche, e disconettersi dall'app.
 
