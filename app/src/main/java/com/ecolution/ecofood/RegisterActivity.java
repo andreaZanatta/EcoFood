@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -189,7 +190,7 @@ public class RegisterActivity extends AppCompatActivity {
                         UserModel user;
                         // Crea un oggetto utente con i dati
                         if(!isVenditore)
-                            user = new CustomerModel(userId, nome, cognome, email, password, profileImageUrl);
+                            user = new CustomerModel(userId, nome, cognome, email, password, profileImageUrl, new ArrayList<String>());
                         else {
                             Log.d("Debug", "PROVA LOGO: " + storeLogoUrl);
                             user = new SellerModel(userId, nome, cognome, email, password, profileImageUrl, new ArrayList<>(), nomeNegozio, indirizzo, storeLogoUrl);

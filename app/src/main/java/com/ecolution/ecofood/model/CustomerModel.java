@@ -21,8 +21,8 @@ public class CustomerModel extends UserModel {
         this.notification = NotificationType.All;
     }
 
-    public CustomerModel(String id, String fname, String lname, String email, String hash, String img) {
-        super(id, fname, lname, email, false);
+    public CustomerModel(String id, String fname, String lname, String email, String hash, String img, List<String> fav) {
+        super(id, fname, lname, email, hash, false, img, fav);
         this.notification = NotificationType.All;
     }
 
